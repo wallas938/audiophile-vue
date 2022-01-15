@@ -1,3 +1,7 @@
+<template>
+  <p>TEST</p>
+</template>
+
 <script>
 export default {
   name: "App",
@@ -5,5 +9,8 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+p {
+  font-family: 'Manrope', sans-serif;
+}
 </style>
