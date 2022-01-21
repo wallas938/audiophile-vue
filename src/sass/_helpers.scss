@@ -17,6 +17,13 @@
     }
 }
 
+.hide-for-mobile-and-tablet {
+    @include breakpoint-up($mobile-min, $tablet-max) {
+        // 768px => 1439px
+        display: none !important;
+    }
+}
+
 .hide-for-desktop {
     @include breakpoint-up($desktop-min, $desktop-max) {
         // 1440px => 2440px

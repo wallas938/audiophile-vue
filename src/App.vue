@@ -1,16 +1,18 @@
 <template>
-  <p>TEST</p>
+  <the-header></the-header>
+  <!-- <the-footer></the-footer> -->
+  <!-- <showcase-item></showcase-item> -->
 </template>
 
 <script>
+import TheHeader from '@/components/layout/TheHeader';
+
 export default {
-  name: "App",
-  components: {},
+  components: {
+    TheHeader
+  },
 };
 </script>
 
 <style lang="scss" scoped>
-p {
-  font-family: 'Manrope', sans-serif;
-}
 </style>
