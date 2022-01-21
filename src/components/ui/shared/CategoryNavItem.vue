@@ -1,5 +1,5 @@
 <template>
-  <div class="category-item" :class="{ headphones: category === 'headphones', speakers: category === 'speakers', earphones: category === 'earphones' }">
+  <div class="category-nav-item" :class="{ headphones: category === 'headphones', speakers: category === 'speakers', earphones: category === 'earphones' }">
     <p><slot></slot></p>
     <div class="to-shop">
       <button>SHOP</button>
@@ -30,7 +30,7 @@ export default {
 @import "@/sass/_colors.scss";
 @import "@/sass/_variables.scss";
 
-.category-item {
+.category-nav-item {
   background-color: $grey;
   border-radius: 0.533333rem;
   width: 21.8rem;

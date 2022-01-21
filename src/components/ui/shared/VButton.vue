@@ -16,6 +16,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import "@/sass/_colors.scss";
+@import "@/sass/_variables.scss";
 button {
   padding: 1rem 2.1rem;
   font-size: 0.866666rem;
@@ -38,10 +40,10 @@ button {
 .fill {
   color: #fff;
   border: none;
-  background-color: #D87D4A;
+  background-color: $orange;
 
   &:hover {
-    background-color: #FBAF85;
+    background-color: $hovered-orange;
   }
 }
 </style>
