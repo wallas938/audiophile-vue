@@ -57,7 +57,16 @@ footer {
   color: rgba($color: #fff, $alpha: 0.5);
   background-color: #000;
   padding: 3.466666rem 1.6rem 2.533333rem 1.6rem;
-
+  &::after {
+    content: "";
+    height: 0.266666rem;
+    width: 6.933333rem;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: $orange;
+  }
   .logo,
   .footer-nav,
   .footer-txt,
@@ -98,7 +107,7 @@ footer {
     }
 
     & > li:hover {
-        color: $orange;
+      color: $orange;
     }
   }
 
@@ -148,7 +157,10 @@ footer {
       "footer-nav footer-nav"
       "footer-txt footer-txt"
       "copyright social";
-
+    &::after {
+      left: 2.6rem;
+      transform: unset;
+    }
     .logo,
     .footer-nav,
     .footer-txt,
@@ -215,6 +227,10 @@ footer {
       "logo footer-nav"
       "footer-txt social"
       "copyright copyright";
+
+    &::after {
+      left: 11rem;
+    }
 
     .footer-nav {
       flex-direction: row;
