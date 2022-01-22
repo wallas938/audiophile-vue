@@ -63,7 +63,7 @@ export default {
 .prd-main-info {
   .prd-img {
     margin: 0 auto 2.133333rem auto; // 32px
-    border-radius: 0.533333rem;
+    border-radius: 0.533333rem; // 8px
   }
   .prd-img source {
     display: inline-block;
