@@ -1,0 +1,7 @@
+AUdiophile
+
+to DO
+
+CategoryNavItem ->
+	ajouter une width lorsque le container est en flex:row
+	
