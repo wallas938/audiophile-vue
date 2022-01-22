@@ -1,5 +1,12 @@
 <template>
-  <div class="category-nav-item" :class="{ headphones: category === 'headphones', speakers: category === 'speakers', earphones: category === 'earphones' }">
+  <div
+    class="category-nav-item"
+    :class="{
+      headphones: category === 'headphones',
+      speakers: category === 'speakers',
+      earphones: category === 'earphones',
+    }"
+  >
     <p><slot></slot></p>
     <div class="to-shop">
       <button>SHOP</button>
@@ -14,9 +21,6 @@ export default {
       type: String,
       require: true,
     },
-  },
-  created() {
-    /* console.log(require(this.imgSrc)); */
   },
   computed: {
     source() {
@@ -33,7 +37,6 @@ export default {
 .category-nav-item {
   background-color: $grey;
   border-radius: 0.533333rem;
-  width: 21.8rem;
   height: 11rem;
   position: relative;
   display: flex;
@@ -108,6 +111,27 @@ export default {
 .earphones::before {
   background-image: url("~@/assets/shared/image-category-thumbnail-earphones.png");
 }
+
+@media screen and (min-width: $tablet-min) {
+  .category-nav-item {
+    width: 14.866666rem;
+  }
+}
+
+@media screen and (min-width: $desktop-min) {
+  .category-nav-item {
+    width: 23.333333rem;
+    height: 13.6rem;
+
+    p {
+      line-height: 24.59px;
+      letter-spacing: 1.29px;
+      margin-bottom: 1.266666rem; // 19px
+      font-size: 1.2rem; // 18px
+    }
+  }
+}
+
 /* .headphones::before {
   content: "";
   position: absolute;
