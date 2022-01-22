@@ -22,6 +22,7 @@ button {
   padding: 1rem 2.1rem;
   font-size: 0.866666rem;
   font-weight: bold;
+  font-style: normal;
   line-height: 17.76px;
   letter-spacing: 1px;
 }

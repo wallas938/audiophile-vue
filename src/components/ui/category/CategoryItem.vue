@@ -6,7 +6,7 @@
           media="(min-width: 1440px)"
           :srcset="
             require('@/assets/' +
-              prdName +
+              prdFolder +
               '/desktop/image-category-page-preview.jpg')
           "
         />
@@ -14,7 +14,7 @@
           media="(min-width: 768px)"
           :srcset="
             require('@/assets/' +
-              prdName +
+              prdFolder +
               '/tablet/image-category-page-preview.jpg')
           "
         />
@@ -22,14 +22,14 @@
           media="(max-width: 376px)"
           :srcset="
             require('@/assets/' +
-              prdName +
+              prdFolder +
               '/mobile/image-category-page-preview.jpg')
           "
         />
         <img
           :src="
             require('@/assets/' +
-              prdName +
+              prdFolder +
               '/mobile/image-category-page-preview.jpg')
           "
         />
@@ -54,7 +54,7 @@
 export default {
   props: ["product"],
   computed: {
-    prdName() {
+    prdFolder() {
       return "product-xx99-mark-two-headphones";
     },
   },
