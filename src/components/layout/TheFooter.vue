@@ -57,6 +57,7 @@ footer {
   color: rgba($color: #fff, $alpha: 0.5);
   background-color: #000;
   padding: 3.466666rem 1.6rem 2.533333rem 1.6rem;
+  position: relative;
   &::after {
     content: "";
     height: 0.266666rem;

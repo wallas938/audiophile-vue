@@ -1,5 +1,11 @@
 <template>
-  <button :class="{fill: mode === 'fill', flat: mode === 'flat'}">
+  <button
+    :class="{
+      fill: mode === 'fill',
+      flat: mode === 'flat',
+      dark: mode === 'dark',
+    }"
+  >
     <slot></slot>
   </button>
 </template>
@@ -7,10 +13,10 @@
 <script>
 export default {
   props: {
-      mode: {
-          type: String,
-          default: 'fill'
-      }
+    mode: {
+      type: String,
+      default: "fill",
+    },
   },
 };
 </script>
@@ -45,6 +51,18 @@ button {
 
   &:hover {
     background-color: $hovered-orange;
+  }
+}
+
+.dark {
+  color: #fff;
+  border: none;
+  background-color: #000;
+
+  &:hover {
+    color: #000;
+    border: 1px solid #000;
+    background-color: #fff;
   }
 }
 </style>
