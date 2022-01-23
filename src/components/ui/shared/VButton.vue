@@ -60,9 +60,8 @@ button {
   background-color: #000;
 
   &:hover {
-    color: #000;
-    border: 1px solid #000;
-    background-color: #fff;
+    border: none;
+    background-color: $hovered-black;
   }
 }
 </style>
