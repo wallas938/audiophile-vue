@@ -36,7 +36,7 @@ button {
 .flat {
   color: #000;
   border: 1px solid #000;
-  background-color: #fff;
+  background-color: transparent;
 
   &:hover {
     color: #fff;
