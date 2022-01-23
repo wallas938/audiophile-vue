@@ -1,5 +1,5 @@
 <template>
-  <section class="showcase-item">
+  <section class="showcase-item container">
     <div class="img"></div>
     <div class="content">
       <h1>BRINGING YOU THE <span>BEST</span> AUDIO GEAR</h1>

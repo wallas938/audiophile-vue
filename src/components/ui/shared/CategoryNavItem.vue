@@ -45,6 +45,10 @@ export default {
   align-items: center;
   padding-bottom: 1.466666rem;
 
+  &:not(:last-child) {
+    margin-bottom: 4.533333rem;
+  }
+
   &::before {
     content: "";
     position: absolute;
@@ -115,6 +119,11 @@ export default {
 @media screen and (min-width: $tablet-min) {
   .category-nav-item {
     width: 14.866666rem;
+
+    &:not(:last-child) {
+      margin-bottom: unset;
+      margin-right: 0.666666rem;
+    }
   }
 }
 
@@ -122,7 +131,9 @@ export default {
   .category-nav-item {
     width: 23.333333rem;
     height: 13.6rem;
-
+    &:not(:last-child) {
+      margin-right: 2rem;
+    }
     p {
       line-height: 24.59px;
       letter-spacing: 1.29px;

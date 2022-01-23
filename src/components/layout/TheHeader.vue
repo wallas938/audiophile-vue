@@ -40,7 +40,7 @@ export default {};
 
 header {
   /* padding: 2.133333rem 1.6rem; */
-  background-color: #000;
+  background-color: $special-black;
   color: #fff;
 
   img {
@@ -103,8 +103,6 @@ header {
 @media screen and (min-width: $desktop-min) {
   header {
     /* padding: 2.133333rem 1.6rem; */
-    background-color: #000;
-    color: #fff;
 
     img {
       cursor: pointer;

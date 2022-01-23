@@ -7,14 +7,18 @@ import './sass/_global.scss';
 import './sass/_mixins.scss';
 import './sass/_helpers.scss';
 
+import router from './router';
+
 import VButton from './components/ui/shared/VButton';
-import ShowcaseItem from './components/ui/shared/ShowcaseItem';
+import WhoWeAre from './components/ui/shared/WhoWeAre';
 import CategoryNavItem from './components/ui/shared/CategoryNavItem';
 
 const app = createApp(App);
 
 app.component("v-button", VButton);
-app.component("showcase-item", ShowcaseItem);
+app.component("who-we-are", WhoWeAre);
 app.component("category-nav-item", CategoryNavItem);
+
+app.use(router);
 
 app.mount('#app');
