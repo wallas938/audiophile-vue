@@ -119,7 +119,7 @@ export default {
 @media screen and (min-width: $tablet-min) {
   .category-nav-item {
     width: 14.866666rem;
-
+    flex: 1;
     &:not(:last-child) {
       margin-bottom: unset;
       margin-right: 0.666666rem;
