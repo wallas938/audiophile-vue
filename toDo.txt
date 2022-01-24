@@ -3,8 +3,6 @@ AUdiophile
 to DO
 
 HomePage ->
-	revoir l'hover du v-button en mode dark (voir les maquettes active "desktop" )
-	revoir la couleur de fond du v-button en mode "flat" il doit etre transparent 
 
 	ajouter l'hover a la nav
-	
+	Finir le menu du Header

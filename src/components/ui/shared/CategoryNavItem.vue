@@ -65,7 +65,7 @@ export default {
   }
   p,
   .to-shop {
-    z-index: 5;
+    z-index: 2;
   }
 
   p {
