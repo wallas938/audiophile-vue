@@ -1,17 +1,20 @@
 <template>
-  <header class="mobile-tablet-header hide-for-desktop">
-    <div class="container">
-      <div class="menu">
-        <img src="@/assets/shared/icon-hamburger.svg" alt="icon-humburger" />
+  <div class="mobile-tablet-menu-container">
+    <header class="mobile-tablet-header hide-for-desktop">
+      <div class="container">
+        <div class="menu" @click="toggleMenu">
+          <img src="@/assets/shared/icon-hamburger.svg" alt="icon-humburger" />
+        </div>
+        <div class="logo">
+          <img src="@/assets/shared/logo.svg" alt="audiophile" />
+        </div>
+        <div class="cart">
+          <img src="@/assets/shared/icon-cart.svg" alt="audiophile" />
+        </div>
       </div>
-      <div class="logo">
-        <img src="@/assets/shared/logo.svg" alt="audiophile" />
-      </div>
-      <div class="cart">
-        <img src="@/assets/shared/icon-cart.svg" alt="audiophile" />
-      </div>
-    </div>
-  </header>
+    </header>
+  </div>
+
   <header class="desktop-header hide-for-mobile-and-tablet">
     <div class="container">
       <div class="logo">
@@ -31,7 +34,14 @@
 </template>
 
 <script>
-export default {};
+export default {
+  emits: ["update:menuOpened"],
+  methods: {
+    toggleMenu() {
+      this.$emit("update:menuOpened");
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -63,12 +73,14 @@ header {
   }
 }
 
-.mobile-tablet-header .container {
-  padding: 2.133333rem 1.6rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid rgba($color: #979797, $alpha: .2);
+.mobile-tablet-menu-container {
+  .mobile-tablet-header .container {
+    padding: 2.133333rem 1.6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba($color: #979797, $alpha: 0.2);
+  }
 }
 
 @media screen and (min-width: $tablet-min) {
@@ -89,14 +101,16 @@ header {
     }
   }
 
-  .mobile-tablet-header .container {
-    padding: 2.133333rem 0rem;
-    width: 100%;
-    display: grid;
-    grid-template-columns: 3.866666rem 9.533333rem auto; // 1.066666rem + 2.8rem = 3.866666rem
-    grid-template-areas: "menu logo cart";
-    justify-content: unset;
-    align-items: center;
+  .mobile-tablet-menu-container {
+    .mobile-tablet-header .container {
+      padding: 2.133333rem 0rem;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 3.866666rem 9.533333rem auto; // 1.066666rem + 2.8rem = 3.866666rem
+      grid-template-areas: "menu logo cart";
+      justify-content: unset;
+      align-items: center;
+    }
   }
 }
 
@@ -139,7 +153,7 @@ header {
     padding: 2.133333rem 0;
     display: flex;
     justify-content: space-between;
-    border-bottom: 1px solid rgba($color: #979797, $alpha: .2);
+    border-bottom: 1px solid rgba($color: #979797, $alpha: 0.2);
   }
 }
 </style>
