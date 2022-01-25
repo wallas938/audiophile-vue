@@ -87,6 +87,10 @@ export default {};
       position: relative;
     }
 
+    .to-shop a:hover {
+      color: $orange;
+    }
+
     .to-shop a::after {
       content: "";
       width: 5px;
