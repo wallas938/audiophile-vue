@@ -1,48 +1,40 @@
 <template>
-  <div class="category-item">
+  <div class="category-item" :class="{'flex-reverse': product.id % 2 !== 0}">
     <div class="prd-img">
       <picture>
         <source
           media="(min-width: 1440px)"
           :srcset="
             require('@/assets/' +
-              prdFolder +
-              '/desktop/image-category-page-preview.jpg')
+              product.categoryImage.desktop)
           "
         />
         <source
           media="(min-width: 768px)"
           :srcset="
             require('@/assets/' +
-              prdFolder +
-              '/tablet/image-category-page-preview.jpg')
+              product.categoryImage.tablet)
           "
         />
         <source
           media="(max-width: 376px)"
           :srcset="
             require('@/assets/' +
-              prdFolder +
-              '/mobile/image-category-page-preview.jpg')
+              product.categoryImage.mobile)
           "
         />
         <img
           :src="
             require('@/assets/' +
-              prdFolder +
-              '/mobile/image-category-page-preview.jpg')
+              product.categoryImage.mobile)
           "
         />
       </picture>
     </div>
     <div class="prd-body">
-      <p v-if="true" class="new-prd">NEW PRODUCT</p>
-      <h1 class="prd-name">XX99 MARK II HEADPHONES</h1>
-      <p class="prd-desc">
-        The new XX99 Mark II headphones is the pinnacle of pristine audio. It
-        redefines your premium headphone experience by reproducing the balanced
-        depth and precision of studio-quality sound.
-      </p>
+      <p v-if="product.new" class="new-prd">NEW PRODUCT</p>
+      <h1 class="prd-name">{{product.name.toUpperCase()}}</h1>
+      <p class="prd-desc">{{product.description}}</p>
       <div class="cta">
         <v-button :mode="'fill'">SEE PRODUCT</v-button>
       </div>
@@ -54,9 +46,9 @@
 export default {
   props: ["product"],
   computed: {
-    prdFolder() {
+    /* imgPath() {
       return "product-xx99-mark-two-headphones";
-    },
+    }, */
   },
 };
 </script>
@@ -68,7 +60,9 @@ export default {
 .category-item {
   .prd-img {
     margin: 0 auto;
+    overflow: clip;
     margin-bottom: 2.133333rem;
+    border-radius: 0.533333rem;
   }
   .prd-img source {
     height: 23.466666rem;
@@ -179,6 +173,10 @@ export default {
         justify-content: flex-start;
       }
     }
+  }
+
+  .flex-reverse {
+    flex-direction: row-reverse;
   }
 }
 </style>

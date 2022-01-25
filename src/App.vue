@@ -1,5 +1,10 @@
 <template>
   <div class="audiophile">
+    <!-- HEADER -->
+    <the-header @update:menu-opened="toggleMenu"></the-header>
+
+    <!-- MENU FOR MOBILE AND TABLET -->
+
     <div v-if="menuOpened" class="menu-backdrop" @click="toggleMenu"></div>
     <div v-if="menuOpened" class="menu">
       <div class="wrapper container">
@@ -11,10 +16,10 @@
       </div>
     </div>
 
-    <the-header @update:menu-opened="toggleMenu"></the-header>
+    <!-- ROUTER PAGES -->
     <router-view></router-view>
-    <!-- <other-product></other-product> -->
-    <!-- <product-main-info></product-main-info> -->
+
+    <!-- FOOTER -->
     <div class="footer">
       <the-footer></the-footer>
     </div>
@@ -24,13 +29,12 @@
 <script>
 import TheHeader from "@/components/layout/TheHeader";
 import TheFooter from "@/components/layout/TheFooter";
-//import OtherProduct from "@/components/ui/product/OtherProduct";
-// import ProductMainInfo from '@/components/ui/product/ProductMainInfo';
-
 export default {
   components: {
     TheHeader,
     TheFooter,
+  },
+  created() {
   },
   data() {
     return {

@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
 import HomePage from './pages/HomePage.vue';
+import CategoryPage from './pages/CategoryPage.vue';
 
 import { defineAsyncComponent } from 'vue';
 
@@ -11,6 +12,8 @@ export default createRouter({
   routes: [
     { path: '/', redirect: '/home' },
     { path: '/home', component: HomePage },
-    { path: '/:notFound(.*)', component:  NotFoundPage},
+    { path: '/category/', redirect: '/category/headphones' },
+    { path: '/category/:categoryName', component: CategoryPage },
+    { path: '/:notFound(.*)', component: NotFoundPage },
   ],
 });
