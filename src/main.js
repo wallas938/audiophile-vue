@@ -9,6 +9,8 @@ import './sass/_helpers.scss';
 
 import router from './router';
 
+import store from './store/index';
+
 import VButton from './components/ui/shared/VButton';
 import WhoWeAre from './components/ui/shared/WhoWeAre';
 import CategoryNavItem from './components/ui/shared/CategoryNavItem';
@@ -20,5 +22,6 @@ app.component("who-we-are", WhoWeAre);
 app.component("category-nav-item", CategoryNavItem);
 
 app.use(router);
+app.use(store);
 
 app.mount('#app');

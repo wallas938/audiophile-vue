@@ -50,7 +50,7 @@ export default {
 
 header {
   /* padding: 2.133333rem 1.6rem; */
-  background-color: $special-black;
+  background-color: #000;
   color: #fff;
 
   img {

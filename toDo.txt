@@ -5,4 +5,4 @@ to DO
 HomePage ->
 
 	ajouter l'hover a la nav
-	Finir le menu du Header
+	Change le composant cat-nav-item par catnav (un seul bloc de trois item)

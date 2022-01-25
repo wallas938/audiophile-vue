@@ -9,7 +9,7 @@
   >
     <p><slot></slot></p>
     <div class="to-shop">
-      <button>SHOP</button>
+      <router-link :to="toCategory"><a>SHOP</a> </router-link>
     </div>
   </div>
 </template>
@@ -26,6 +26,9 @@ export default {
     source() {
       return this.imgSrc;
     },
+    toCategory() {
+      return '/category/'+this.category;
+    }
   },
 };
 </script>
@@ -81,7 +84,7 @@ export default {
     justify-content: center;
   }
 
-  .to-shop button {
+  .to-shop a {
     font-size: 0.8666666rem;
     font-weight: bold;
     line-height: 17.76px;
@@ -91,7 +94,7 @@ export default {
     position: relative;
   }
 
-  .to-shop button::after {
+  .to-shop a::after {
     content: "";
     width: 5px;
     height: 10px;
