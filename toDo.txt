@@ -4,5 +4,5 @@ to DO
 
 HomePage ->
 
-	ajouter l'hover au item de la cat-nav
 	ajouter les cercles en fond sur le premier produit de la section showcase-prd
+	remplacer les cat nav item cmps par la cat nav cmp dans le menu mobile 
