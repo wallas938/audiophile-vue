@@ -58,6 +58,9 @@ export default {
 @import "@/sass/_variables.scss";
 
 .category-item {
+  &:not(:first-child) {
+    padding-top: 8rem;
+  }
   .prd-img {
     margin: 0 auto;
     overflow: clip;
