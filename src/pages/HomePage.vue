@@ -25,6 +25,9 @@
     <section class="showcase-prd">
       <div class="zx9-spkr">
         <div class="wrapper container">
+          <div class="patter-circles hide-for-tablet hide-for-mobile">
+            <img src="@/assets/home/desktop/pattern-circles.svg" />
+          </div>
           <div class="prd-img">
             <picture>
               <source
@@ -212,6 +215,7 @@ export default {
 
   .zx9-spkr {
     padding: 8rem 1.6rem 0 1.6rem;
+    position: relative;
 
     .wrapper {
       background-color: $orange;
@@ -507,12 +511,24 @@ export default {
 
     .zx9-spkr {
       padding: 11.2rem 11rem 0 11rem;
+
       .wrapper {
         padding: 8.866666rem 6.333333rem 8.266666rem 0; //133px 95px 169px 124px
         display: flex;
         flex-direction: row-reverse;
         position: relative;
         overflow: clip;
+
+        .patter-circles {
+          position: absolute;
+          top: -2.4rem;
+          left: -9.933333rem;
+          right: 0;
+          bottom: 0;
+          width: 62.933333rem;
+          height: 62.933333rem;
+        }
+
         .prd-img {
           position: absolute;
           left: 7.832666rem;
