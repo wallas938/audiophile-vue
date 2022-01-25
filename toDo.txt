@@ -5,5 +5,6 @@ to DO
 HomePage ->
 
 	ajouter l'hover a la nav
+	ajouter l'hover au item de la cat-nav
 	Change le composant cat-nav-item par catnav (un seul bloc de trois item)
 	ajouter les cercles en fond sur le premier produit de la section showcase-prd

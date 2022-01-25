@@ -6,7 +6,9 @@
           <img src="@/assets/shared/icon-hamburger.svg" alt="icon-humburger" />
         </div>
         <div class="logo">
-          <img src="@/assets/shared/logo.svg" alt="audiophile" />
+          <router-link to="/home"
+            ><img src="@/assets/shared/logo.svg" alt="audiophile"
+          /></router-link>
         </div>
         <div class="cart">
           <img src="@/assets/shared/icon-cart.svg" alt="audiophile" />
@@ -18,7 +20,9 @@
   <header class="desktop-header hide-for-mobile-and-tablet">
     <div class="container">
       <div class="logo">
-        <img src="@/assets/shared/logo.svg" alt="audiophile" />
+        <router-link to="/home"
+          ><img src="@/assets/shared/logo.svg" alt="audiophile"
+        /></router-link>
       </div>
       <ul class="header-nav">
         <li class="home">Home</li>
@@ -39,8 +43,8 @@ export default {
   methods: {
     toggleMenu() {
       this.$emit("update:menuOpened");
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -131,15 +135,20 @@ header {
       display: flex;
 
       & > li {
-        font-size: 0.866666;
+        font-size: 0.866666rem;
         font-weight: bold;
         line-height: 25px;
         letter-spacing: 2px;
         color: #fff;
+        cursor: pointer;
       }
 
       & > li:not(:last-child) {
         margin-right: 2.266666rem;
+      }
+
+      & > li:hover {
+        color: $orange;
       }
     }
 
