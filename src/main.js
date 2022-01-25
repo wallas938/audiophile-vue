@@ -13,13 +13,13 @@ import store from './store/index';
 
 import VButton from './components/ui/shared/VButton';
 import WhoWeAre from './components/ui/shared/WhoWeAre';
-import CategoryNavItem from './components/ui/shared/CategoryNavItem';
+import CategoryNav from './components/ui/shared/CategoryNav';
 
 const app = createApp(App);
 
 app.component("v-button", VButton);
 app.component("who-we-are", WhoWeAre);
-app.component("category-nav-item", CategoryNavItem);
+app.component("category-nav", CategoryNav);
 
 app.use(router);
 app.use(store);
