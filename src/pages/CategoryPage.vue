@@ -3,34 +3,42 @@
     <div class="caption">
       <p>{{ $route.params.categoryName }}</p>
     </div>
-    <section class="products wrapper container">
-      <category-item
-        v-for="prd in products"
-        :key="prd.id"
-        :product="prd"
-      ></category-item>
-    </section>
-    <section class="cat-nav">
+    <section class="products">
       <div class="wrapper container">
-        <category-nav-item :category="'headphones'"
-          >HEADPHPONES</category-nav-item
-        >
-        <category-nav-item :category="'speakers'">SPEAKERS</category-nav-item>
-        <category-nav-item :category="'earphones'">EARPHONES</category-nav-item>
+        <category-item
+          v-for="prd in products"
+          :key="prd.id"
+          :product="prd"
+        ></category-item>
+      </div>
+    </section>
+    <section class="cat-nav-item">
+      <div class="wrapper container">
+        <category-nav></category-nav>
       </div>
     </section>
     <!-- WHO WE ARE SECTION -->
     <section class="who-we-are">
       <who-we-are></who-we-are>
     </section>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <the-footer></the-footer>
+    </div>
   </div>
 </template>
 
 <script>
+import CategoryNav from "../components/ui/shared/CategoryNav.vue";
 import CategoryItem from "@/components/ui/category/CategoryItem";
+import TheFooter from "@/components/layout/TheFooter";
+
 export default {
   components: {
     CategoryItem,
+    CategoryNav,
+    TheFooter,
   },
   created() {
     console.log(
@@ -71,16 +79,20 @@ export default {
     }
   }
 
-  .wrapper {
+  .products {
     padding: 4.266666rem 1.6rem 0 1.6rem;
   }
 
-  .cat-nav {
-    padding: 6.133333rem 1.6rem 0 1.6rem;
+  .cat-nav-item {
+    padding: 11.466666rem 1.6rem 0 1.6rem;
   }
 
   .who-we-are {
     padding: 8rem 1.6rem 0 1.6rem;
+  }
+
+  .footer {
+    padding-top: 8rem; // 120px
   }
 }
 
@@ -95,11 +107,11 @@ export default {
       }
     }
 
-    .wrapper {
+    .products {
       padding: 8rem 2.666666rem 0 2.6rem;
     }
 
-    .cat-nav {
+    .cat-nav-item {
       padding: 9.866666rem 2.666666rem 0 2.6rem;
 
       .wrapper {
@@ -109,7 +121,7 @@ export default {
     }
 
     .who-we-are {
-      padding: 6.4rem 2.666666rem 0 2.6rem;
+      padding: 8rem 2.666666rem 0 2.6rem;
     }
   }
 }
@@ -120,16 +132,20 @@ export default {
       height: 15.933333rem; // 239px
     }
 
-    .wrapper {
+    .products {
       padding: 10.666666rem 0 0 0;
     }
 
-    .cat-nav {
-      padding: 13.333333rem 11rem 0 11rem;
+    .cat-nav-item {
+      padding: 16rem 11rem 0 11rem;
     }
 
     .who-we-are {
-      padding: 13.333333rem 11rem 0 11rem;
+      padding: 10.666666rem 11rem 0 11rem;
+    }
+
+    .footer {
+      padding-top: 10.666666rem;
     }
   }
 }

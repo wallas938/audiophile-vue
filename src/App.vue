@@ -18,21 +18,14 @@
 
     <!-- ROUTER PAGES -->
     <router-view></router-view>
-
-    <!-- FOOTER -->
-    <div class="footer">
-      <the-footer></the-footer>
-    </div>
   </div>
 </template>
 
 <script>
 import TheHeader from "@/components/layout/TheHeader";
-import TheFooter from "@/components/layout/TheFooter";
 export default {
   components: {
     TheHeader,
-    TheFooter,
   },
   created() {
   },
@@ -83,7 +76,7 @@ export default {
   }
 
   .footer {
-    padding-top: 6.4rem; // 96px
+    padding-top: 8rem; // 120px
   }
 }
 
@@ -108,21 +101,8 @@ export default {
         padding: 7.2rem 2.666666rem 4.466666rem 2.6rem;
       }
     }
-    /* .menu-backdrop {
-      padding-bottom: 10.533333rem;
-      top: 6.333333rem;
-      min-height: 60.666666rem;
-      .menu {
-        padding: 7.2rem 2.666666rem 4.466666rem 2.6rem;
-
-        .wrapper {
-          display: flex;
-          justify-content: space-between;
-        }
-      }
-    } */
     .footer {
-      padding-top: 13.333333rem; // 200px
+      padding-top: 6.4rem; // 96px
     }
   }
 }

@@ -57,6 +57,8 @@ export default {};
     p {
       font-weight: 500;
       line-height: 25px;
+      color: rgba($color: #000000, $alpha: .5);
+      font-style: normal;
     }
   }
 }

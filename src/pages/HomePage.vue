@@ -5,7 +5,7 @@
       <div class="hero__img"></div>
       <div class="hero__txt">
         <p class="new-prd">NEW PRODUCT</p>
-        <h1 class="main-prd-name">XX99 Mark II HEADPHONES</h1>
+        <h1 class="main-prd-name">XX99 MARK II HEADPHONES</h1>
         <p class="sales-pitch">
           Experience natural, lifelike audio and exceptional build quality made
           for the passionate music enthusiast.
@@ -117,14 +117,21 @@
     <section class="who-we-are">
       <who-we-are></who-we-are>
     </section>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      <the-footer></the-footer>
+    </div>
   </div>
 </template>
 
 <script>
 import CategoryNav from "../components/ui/shared/CategoryNav.vue";
 import WhoWeAre from "../components/ui/shared/WhoWeAre.vue";
+import TheFooter from "@/components/layout/TheFooter";
+
 export default {
-  components: { WhoWeAre, CategoryNav },
+  components: { WhoWeAre, CategoryNav, TheFooter },
   computed: {
     prdFolder() {
       return "home";
@@ -248,7 +255,7 @@ export default {
   }
 
   .zx7-spkr {
-    padding: 1.6rem;
+    padding: 1.6rem 1.6rem 0 1.6rem;
     .wrapper {
       padding: 6.733333rem 0 0 1.6rem;
       border-radius: 0.533333rem;
@@ -304,6 +311,11 @@ export default {
         background-color: $grey;
         h1 {
           margin-bottom: 2.133333rem;
+          font-weight: bold;
+          font-style: normal;
+          font-size: 1.866666rem;
+          line-height: 38.25px;
+          letter-spacing: 2px;
         }
 
         .cta {
@@ -316,6 +328,10 @@ export default {
 
   .who-we-are {
     padding: 8rem 1.6rem 0 1.6rem;
+  }
+
+  .footer {
+    padding-top: 8rem; // 120px
   }
 }
 
@@ -386,7 +402,7 @@ export default {
     }
 
     .zx7-spkr {
-      padding: 1.6rem 2.666666rem;
+      padding: 2.133333rem 2.6rem 0 2.666666rem;
       .wrapper {
         padding: 6.733333rem 0 0 4.133333rem;
       }
@@ -416,6 +432,10 @@ export default {
           bottom: 0;
           z-index: -1;
         }
+
+        .prd-img img {
+          height: auto;
+        }
         .prd-body {
           border-radius: 0.533333rem;
           padding: 6.7333333rem 0 0 2.7333333rem;
@@ -432,6 +452,10 @@ export default {
 
     .who-we-are {
       padding: 6.4rem 2.666666rem 0 2.6rem;
+    }
+
+    .footer {
+      padding-top: 6.4rem; // 96px
     }
   }
 }
@@ -518,7 +542,7 @@ export default {
     }
 
     .zx7-spkr {
-      padding: 3.2rem 2.666666rem; // 40px
+      padding: 3.2rem 2.666666rem 0 2.6rem; // 48px 40px 0 39px
       .wrapper {
         padding: 6.733333rem 0 0 6.333333rem; // 95px
       }
@@ -544,6 +568,10 @@ export default {
 
     .who-we-are {
       padding: 13.333333rem 11rem 0 11rem;
+    }
+
+    .footer {
+      padding-top: 13.333333rem; // 200px
     }
   }
 }

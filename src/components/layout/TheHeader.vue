@@ -53,8 +53,8 @@ export default {
 @import "@/sass/_variables.scss";
 
 header {
+  background-color: #0e0e0e;
   /* padding: 2.133333rem 1.6rem; */
-  background-color: #000;
   color: #fff;
 
   img {
