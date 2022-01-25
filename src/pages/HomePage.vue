@@ -17,14 +17,8 @@
     </section>
 
     <!-- CATEGORY NAV SECTION -->
-    <section class="cat-nav">
-      <div class="wrapper container">
-        <category-nav-item :category="'headphones'"
-          >HEADPHPONES</category-nav-item
-        >
-        <category-nav-item :category="'speakers'">SPEAKERS</category-nav-item>
-        <category-nav-item :category="'earphones'">EARPHONES</category-nav-item>
-      </div>
+    <section class="cat-nav-item">
+      <category-nav></category-nav>
     </section>
 
     <!-- SHOWCASE PRODUCTS SECTION -->
@@ -126,6 +120,19 @@
   </div>
 </template>
 
+<script>
+import CategoryNav from "../components/ui/shared/CategoryNav.vue";
+import WhoWeAre from "../components/ui/shared/WhoWeAre.vue";
+export default {
+  components: { WhoWeAre, CategoryNav },
+  computed: {
+    prdFolder() {
+      return "home";
+    },
+  },
+};
+</script>
+
 
 <style lang="scss" scoped>
 @import "@/sass/_colors.scss";
@@ -192,7 +199,7 @@
     }
   }
 
-  .cat-nav {
+  .cat-nav-item {
     padding: 6.133333rem 1.6rem 0 1.6rem;
   }
 
@@ -347,13 +354,8 @@
       }
     }
 
-    .cat-nav {
+    .cat-nav-item {
       padding: 9.866666rem 2.666666rem 0 2.6rem;
-
-      .wrapper {
-        display: flex;
-        justify-content: space-between;
-      }
     }
 
     .zx9-spkr {
@@ -475,7 +477,7 @@
       }
     }
 
-    .cat-nav {
+    .cat-nav-item {
       padding: 13.333333rem 11rem 0 11rem;
     }
 
@@ -546,17 +548,3 @@
   }
 }
 </style>
-
-
-<script>
-import WhoWeAre from "../components/ui/shared/WhoWeAre.vue";
-export default {
-  components: { WhoWeAre },
-  computed: {
-    prdFolder() {
-      return "home";
-    },
-  },
-};
-</script>
-
