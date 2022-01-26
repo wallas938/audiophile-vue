@@ -13,7 +13,11 @@ export default createRouter({
     { path: '/', redirect: '/home' },
     { path: '/home', component: HomePage },
     { path: '/category/', redirect: '/category/headphones' },
-    { path: '/category/:categoryName', component: CategoryPage },
+    { path: '/category/:categoryName', component: CategoryPage, props: true },
     { path: '/:notFound(.*)', component: NotFoundPage },
   ],
+  scrollBehavior() {
+    // always scroll to top
+    return { top: 0 }
+  },
 });

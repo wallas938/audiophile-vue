@@ -3,26 +3,34 @@
     <div class="item headphones">
       <p>HEADPHONES</p>
       <div class="to-shop">
-        <router-link to="/category/headphones"><a>SHOP</a> </router-link>
+        <button @click="navigateTo('headphones')">SHOP</button>
       </div>
     </div>
     <div class="item speakers">
       <p>SPEAKERS</p>
       <div class="to-shop">
-        <router-link to="/category/speakers"><a>SHOP</a> </router-link>
+        <button @click="navigateTo('speakers')">SHOP</button>
       </div>
     </div>
     <div class="item earphones">
       <p>EARPHONES</p>
       <div class="to-shop">
-        <router-link to="/category/earphones"><a>SHOP</a></router-link>
+        <button @click="navigateTo('earphones')">SHOP</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  emits: ["update:navigation"],
+  methods: {
+    navigateTo(path) {
+      this.$router.push(`/category/${path}`);
+      this.$emit("update:navigation");
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -77,7 +85,7 @@ export default {};
       justify-content: center;
     }
 
-    .to-shop a {
+    .to-shop button {
       font-size: 0.8666666rem;
       font-weight: bold;
       line-height: 17.76px;
@@ -87,11 +95,11 @@ export default {};
       position: relative;
     }
 
-    .to-shop a:hover {
+    .to-shop button:hover {
       color: $orange;
     }
 
-    .to-shop a::after {
+    .to-shop button::after {
       content: "";
       width: 5px;
       height: 10px;
