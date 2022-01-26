@@ -129,12 +129,12 @@
 </template>
 
 <script>
-import CategoryNav from "../components/ui/shared/CategoryNav.vue";
+
 import WhoWeAre from "../components/ui/shared/WhoWeAre.vue";
 import TheFooter from "@/components/layout/TheFooter";
 
 export default {
-  components: { WhoWeAre, CategoryNav, TheFooter },
+  components: { WhoWeAre, TheFooter },
   computed: {
     prdFolder() {
       return "home";

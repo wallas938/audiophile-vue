@@ -4,5 +4,4 @@ to DO
 
 HomePage ->
 
-	ajouter les cercles en fond sur le premier produit de la section showcase-prd
-	remplacer les cat nav item cmps par la cat nav cmp dans le menu mobile 
+	Rendre la navigation du header (menu & desktop) fonctionelle 
