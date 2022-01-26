@@ -1,7 +1,7 @@
 <template>
   <div class="cat-page">
     <div class="caption">
-      <p>{{ $route.params.categoryName }}</p>
+      <p>{{ categoryName }}</p>
     </div>
     <section class="products">
       <div class="wrapper container">
@@ -34,6 +34,7 @@ import CategoryItem from "@/components/ui/category/CategoryItem";
 import TheFooter from "@/components/layout/TheFooter";
 
 export default {
+  props: ["categoryName"],
   components: {
     CategoryItem,
     TheFooter,
@@ -41,14 +42,14 @@ export default {
   created() {
     console.log(
       this.$store.getters["data"].filter(
-        (data) => data.category === this.$route.params.categoryName
+        (data) => data.category === this.categoryName
       )
     );
   },
   computed: {
     products() {
       const products = this.$store.getters["data"].filter(
-        (data) => data.category === this.$route.params.categoryName
+        (data) => data.category === this.categoryName
       );
       return products.reverse();
     },

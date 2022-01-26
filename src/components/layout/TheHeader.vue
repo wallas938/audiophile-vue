@@ -25,10 +25,16 @@
         /></router-link>
       </div>
       <ul class="header-nav">
-        <li class="home">Home</li>
-        <li class="headphones">Headphones</li>
-        <li class="speakers">Speakers</li>
-        <li class="earphones">Earphones</li>
+        <li><router-link to="/home">Home</router-link></li>
+        <li>
+          <router-link to="/category/headphones">Headphones</router-link>
+        </li>
+        <li>
+          <router-link to="/category/speakers">Speakers</router-link>
+        </li>
+        <li>
+          <router-link to="/category/earphones">Earphones</router-link>
+        </li>
       </ul>
       <div class="cart">
         <img src="@/assets/shared/icon-cart.svg" alt="audiophile" />

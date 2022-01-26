@@ -4,10 +4,16 @@
       <img src="@/assets/shared/logo.svg" alt="audiophile" />
     </div>
     <ul class="footer-nav">
-      <li>HOME</li>
-      <li>HEADPHONES</li>
-      <li>SPEAKERS</li>
-      <li>EARPHONES</li>
+      <li><router-link to="/home">HOME</router-link></li>
+      <li>
+        <router-link to="/category/headphones">HEADPHONES</router-link>
+      </li>
+      <li>
+        <router-link to="/category/speakers">SPEAKERS</router-link>
+      </li>
+      <li>
+        <router-link to="/category/earphones">EARPHONES</router-link>
+      </li>
     </ul>
     <p class="footer-txt">
       Audiophile is an all in one stop to fulfill your audio needs. We're a

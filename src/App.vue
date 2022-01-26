@@ -8,7 +8,7 @@
     <div v-if="menuOpened" class="menu-backdrop" @click="toggleMenu"></div>
     <div v-if="menuOpened" class="menu">
       <div class="wrapper container">
-        <category-nav></category-nav>
+        <category-nav @update:navigation="toggleMenu"></category-nav>
       </div>
     </div>
 
