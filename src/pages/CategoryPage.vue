@@ -30,14 +30,12 @@
 </template>
 
 <script>
-import CategoryNav from "../components/ui/shared/CategoryNav.vue";
 import CategoryItem from "@/components/ui/category/CategoryItem";
 import TheFooter from "@/components/layout/TheFooter";
 
 export default {
   components: {
     CategoryItem,
-    CategoryNav,
     TheFooter,
   },
   created() {

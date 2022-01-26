@@ -8,11 +8,7 @@
     <div v-if="menuOpened" class="menu-backdrop" @click="toggleMenu"></div>
     <div v-if="menuOpened" class="menu">
       <div class="wrapper container">
-        <category-nav-item :category="'headphones'"
-          >HEADPHPONES</category-nav-item
-        >
-        <category-nav-item :category="'speakers'">SPEAKERS</category-nav-item>
-        <category-nav-item :category="'earphones'">EARPHONES</category-nav-item>
+        <category-nav></category-nav>
       </div>
     </div>
 
