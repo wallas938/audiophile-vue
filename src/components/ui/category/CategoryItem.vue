@@ -36,7 +36,7 @@
       <h1 class="prd-name">{{product.name.toUpperCase()}}</h1>
       <p class="prd-desc">{{product.description}}</p>
       <div class="cta">
-        <v-button :mode="'fill'">SEE PRODUCT</v-button>
+        <v-button :mode="'fill'" :path="imgPath">SEE PRODUCT</v-button>
       </div>
     </div>
   </div>
@@ -46,9 +46,9 @@
 export default {
   props: ["product"],
   computed: {
-    /* imgPath() {
-      return "product-xx99-mark-two-headphones";
-    }, */
+    imgPath() {
+      return `/product-detail/${this.product.slug}`;
+    },
   },
 };
 </script>

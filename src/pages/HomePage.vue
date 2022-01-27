@@ -11,7 +11,7 @@
           for the passionate music enthusiast.
         </p>
         <div class="hero__cta">
-          <v-button>SEE PRODUCT</v-button>
+          <v-button :path="xx99markii" mode="fill">SEE PRODUCT</v-button>
         </div>
       </div>
     </section>
@@ -55,7 +55,7 @@
               truly remarkable sound.
             </p>
             <div class="cta">
-              <v-button :mode="'dark'">SEE PRODUCT</v-button>
+              <v-button :path="zx9speaker" mode="dark">SEE PRODUCT</v-button>
             </div>
           </div>
         </div>
@@ -82,7 +82,7 @@
           <div class="prd-body">
             <h1>ZX7 SPEAKER</h1>
             <div class="cta">
-              <v-button :mode="'flat'">SEE PRODUCT</v-button>
+              <v-button :path="zx7speaker" mode="flat">SEE PRODUCT</v-button>
             </div>
           </div>
         </div>
@@ -109,7 +109,7 @@
           <div class="prd-body">
             <h1>YX1 EARPHONES</h1>
             <div class="cta">
-              <v-button :mode="'flat'">SEE PRODUCT</v-button>
+              <v-button :path="yx1earphones" mode="flat">SEE PRODUCT</v-button>
             </div>
           </div>
         </div>
@@ -129,15 +129,25 @@
 </template>
 
 <script>
-
 import WhoWeAre from "../components/ui/shared/WhoWeAre.vue";
-import TheFooter from "@/components/layout/TheFooter";
 
 export default {
-  components: { WhoWeAre, TheFooter },
+  components: { WhoWeAre },
   computed: {
     prdFolder() {
       return "home";
+    },
+    xx99markii() {
+      return "/product-detail/xx99-mark-two-headphones";
+    },
+    zx9speaker() {
+      return "/product-detail/zx9-speaker";
+    },
+    zx7speaker() {
+      return "/product-detail/zx7-speaker";
+    },
+    yx1earphones() {
+      return "/product-detail/yx1-earphones";
     },
   },
 };

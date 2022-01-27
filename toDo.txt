@@ -2,7 +2,5 @@ AUdiophile
 
 to DO
 
-HomePage ->
-
-	Rendre la navigation du header (menu & desktop) fonctionelle 
-	Gérer le scrollBarBehavior lors de la navigation
+ProductDetail ->
+	ajouter l'hover a l'ancre de retour "Go back"

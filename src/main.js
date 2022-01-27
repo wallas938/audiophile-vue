@@ -14,12 +14,14 @@ import store from './store/index';
 import VButton from './components/ui/shared/VButton';
 import WhoWeAre from './components/ui/shared/WhoWeAre';
 import CategoryNav from './components/ui/shared/CategoryNav';
+import TheFooter from './components/layout/TheFooter';
 
 const app = createApp(App);
 
 app.component("v-button", VButton);
 app.component("who-we-are", WhoWeAre);
 app.component("category-nav", CategoryNav);
+app.component("the-footer", TheFooter);
 
 app.use(router);
 app.use(store);

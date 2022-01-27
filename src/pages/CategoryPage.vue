@@ -31,20 +31,11 @@
 
 <script>
 import CategoryItem from "@/components/ui/category/CategoryItem";
-import TheFooter from "@/components/layout/TheFooter";
 
 export default {
   props: ["categoryName"],
   components: {
     CategoryItem,
-    TheFooter,
-  },
-  created() {
-    console.log(
-      this.$store.getters["data"].filter(
-        (data) => data.category === this.categoryName
-      )
-    );
   },
   computed: {
     products() {
