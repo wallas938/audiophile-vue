@@ -1,46 +1,44 @@
 <template>
-  <div class="prd-main-info">
+  <div class="prd-main-info container">
     <div class="prd-img">
       <picture>
         <source
           media="(min-width: 1440px)"
           :srcset="
-            require('@/assets/' + prdFolder + '/desktop/image-product.jpg')
+            require('@/assets/' + imgPath.desktop)
           "
         />
         <source
           media="(min-width: 768px)"
           :srcset="
-            require('@/assets/' + prdFolder + '/tablet/image-product.jpg')
+            require('@/assets/' + imgPath.tablet)
           "
         />
         <source
           media="(max-width: 376px)"
           :srcset="
-            require('@/assets/' + prdFolder + '/mobile/image-product.jpg')
+            require('@/assets/' + imgPath.mobile)
           "
         />
         <img
-          :src="require('@/assets/' + prdFolder + '/mobile/image-product.jpg')"
+          :src="require('@/assets/' + imgPath.mobile)"
         />
       </picture>
     </div>
     <div class="prd-body">
-      <p v-if="true" class="new-prd">NEW PRODUCT</p>
-      <h1 class="prd-name">XX99 MARK II HEADPHONES</h1>
+      <p v-if="product.new" class="new-prd">NEW PRODUCT</p>
+      <h1 class="prd-name">{{product.name}}</h1>
       <p class="prd-desc">
-        The new XX99 Mark II headphones is the pinnacle of pristine audio. It
-        redefines your premium headphone experience by reproducing the balanced
-        depth and precision of studio-quality sound.
+        {{product.description}}
       </p>
-      <p class="prd-price">$ 2,999</p>
+      <p class="prd-price">$ {{product.price}}</p>
       <div class="cta">
         <div class="prd-qty">
           <span class="minus">-</span>
           <span>1</span>
           <span class="plus">+</span>
         </div>
-        <v-button :mode="'fill'">ADD TO CART</v-button>
+        <v-button :mode="'fill'" :path="'/cart/XX99_MARK_II_HEADPHONES'">ADD TO CART</v-button>
       </div>
     </div>
   </div>
@@ -48,9 +46,10 @@
 
 <script>
 export default {
+  props: ["product"],
   computed: {
-    prdFolder() {
-      return "product-xx99-mark-two-headphones";
+    imgPath() {
+      return this.product.image;
     },
   },
 };
@@ -87,6 +86,7 @@ export default {
 
     .prd-name {
       font-size: 1.866666rem;
+      text-transform: uppercase;
       font-weight: bold;
       line-height: 38.25px;
       letter-spacing: 1px;

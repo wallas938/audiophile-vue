@@ -90,6 +90,7 @@ export default {
       font-weight: bold;
       line-height: 17.76px;
       letter-spacing: 1px;
+      background-color: transparent;
       color: rgba($color: #000, $alpha: 0.5);
       border: none;
       position: relative;

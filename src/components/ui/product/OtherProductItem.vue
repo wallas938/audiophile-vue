@@ -4,50 +4,39 @@
       <picture>
         <source
           media="(min-width: 1440px)"
-          :srcset="
-            require('@/assets/' +
-              prdFolder +
-              '/desktop/image-xx99-mark-one-headphones.jpg')
-          "
+          :srcset="require('@/assets/' + imgPath.desktop)"
         />
         <source
           media="(min-width: 768px)"
-          :srcset="
-            require('@/assets/' +
-              prdFolder +
-              '/tablet/image-xx99-mark-one-headphones.jpg')
-          "
+          :srcset="require('@/assets/' + imgPath.tablet)"
         />
         <source
           media="(max-width: 376px)"
-          :srcset="
-            require('@/assets/' +
-              prdFolder +
-              '/mobile/image-xx99-mark-one-headphones.jpg')
-          "
+          :srcset="require('@/assets/' + imgPath.mobile)"
         />
-        <img
-          :src="
-            require('@/assets/' +
-              prdFolder +
-              '/mobile/image-xx99-mark-one-headphones.jpg')
-          "
-        />
+        <img :src="require('@/assets/' + imgPath.mobile)" />
       </picture>
     </div>
-    <h1>XX99 MARK I</h1>
+    <h1>{{other.name}}</h1>
     <div class="cta">
-      <v-button :mode="'fill'">SEE PRODUCT</v-button>
+      <v-button :mode="'fill'" :path="navigateTo">SEE PRODUCT</v-button>
     </div>
   </div>
 </template>
 
 <script>
 export default {
+  props: ["other"],
   computed: {
-    prdFolder() {
-      return "shared";
+    imgPath() {
+      return this.other.image;
     },
+    navigateTo() {
+      return `/product-detail/${this.other.slug}`;
+    },
+    slug() {
+      return this.other.slug.toUpperCase();
+    }
   },
 };
 </script>
@@ -56,8 +45,10 @@ export default {
 @import "@/sass/_colors.scss";
 @import "@/sass/_variables.scss";
 .other-prd {
-  height: 8rem; // 120px
   border-radius: 0.533333rem; // 8px
+  &:not(:first-child) {
+    padding-top: 3.733333rem;
+  }
   .prd-img,
   h1 {
     margin-bottom: 2.133333rem;
@@ -80,8 +71,10 @@ export default {
 
 @media screen and (min-width: $tablet-min) {
   .other-prd {
-    height: 21.2rem; // 318px
     width: 14.86rem; // 223px
+    &:not(:first-child) {
+      padding-top: unset;
+    }
     .prd-img {
       margin-bottom: 2.666666rem; // 40px
     }
@@ -95,7 +88,6 @@ export default {
 
 @media screen and (min-width: $desktop-min) {
   .other-prd {
-    height: 21.2rem; // 318px
     width: 23.333333rem; // 350px
 
     .cta {

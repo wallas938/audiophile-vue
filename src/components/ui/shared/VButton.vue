@@ -1,13 +1,16 @@
 <template>
-  <button
-    :class="{
-      fill: mode === 'fill',
-      flat: mode === 'flat',
-      dark: mode === 'dark',
-    }"
-  >
-    <slot></slot>
-  </button>
+  <router-link :to="navigateTo">
+    <button
+      class="v-button"
+      :class="{
+        fill: mode === 'fill',
+        flat: mode === 'flat',
+        dark: mode === 'dark',
+      }"
+    >
+      <slot></slot>
+    </button>
+  </router-link>
 </template>
 
 <script>
@@ -16,15 +19,24 @@ export default {
     mode: {
       type: String,
       default: "fill",
+      require: true
     },
+    path: {
+      type: String,
+    }
   },
+  computed: {
+    navigateTo() {
+      return `${this.path}`;
+    }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 @import "@/sass/_colors.scss";
 @import "@/sass/_variables.scss";
-button {
+button.v-button {
   padding: 1rem 2.1rem;
   font-size: 0.866666rem;
   font-weight: bold;
