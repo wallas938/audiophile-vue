@@ -161,6 +161,10 @@ export default {
       font-weight: 500;
       line-height: 25px;
     }
+
+    .wrapper a.prev-link:hover {
+      color: $orange;
+    }
   }
 
   .prd-main {

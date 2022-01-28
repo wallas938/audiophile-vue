@@ -23,11 +23,11 @@
 
 <script>
 export default {
-  emits: ["update:navigation"],
+  emits: ["active:navigation"],
   methods: {
     navigateTo(path) {
       this.$router.push(`/category/${path}`);
-      this.$emit("update:navigation");
+      this.$emit("active:navigation");
     }
   }
 };
