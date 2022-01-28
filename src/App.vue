@@ -1,14 +1,23 @@
 <template>
   <div class="audiophile">
     <!-- HEADER -->
-    <the-header @update:menu-opened="toggleMenu"></the-header>
+    <the-header @open:menu="toggleMenu" @display:cart="displayCart"></the-header>
+
+    <!-- GLOBAL BACKDROP -->
+
+    <div v-if="menuOpened || cartDisplayed" class="menu-backdrop" @click="toggleMenu"></div>
 
     <!-- MENU FOR MOBILE AND TABLET -->
-
-    <div v-if="menuOpened" class="menu-backdrop" @click="toggleMenu"></div>
     <div v-if="menuOpened" class="menu">
       <div class="wrapper container">
-        <category-nav @update:navigation="toggleMenu"></category-nav>
+        <category-nav @active:navigation="toggleMenu"></category-nav>
+      </div>
+    </div>
+
+    <!-- CART MODAL -->
+    <div v-if="cartDisplayed" class="cart">
+      <div class="wrapper container">
+        <cart-item></cart-item>
       </div>
     </div>
 
@@ -23,16 +32,25 @@ export default {
   components: {
     TheHeader,
   },
-  created() {
-  },
+  created() {},
   data() {
     return {
       menuOpened: false,
+      cartDisplayed: false,
     };
+  },
+  watch: {
+    cartDisplayed(val) {
+      console.log(val);
+    }
   },
   methods: {
     toggleMenu() {
       this.menuOpened = !this.menuOpened;
+    },
+    displayCart() {
+      console.log(this.cartDisplayed);
+      this.cartDisplayed = !this.cartDisplayed;
     },
   },
 };

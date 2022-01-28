@@ -10,7 +10,7 @@
             ><img src="@/assets/shared/logo.svg" alt="audiophile"
           /></router-link>
         </div>
-        <div class="cart">
+        <div class="cart" @click="displayCart">
           <img src="@/assets/shared/icon-cart.svg" alt="audiophile" />
         </div>
       </div>
@@ -36,7 +36,7 @@
           <router-link to="/category/earphones">Earphones</router-link>
         </li>
       </ul>
-      <div class="cart">
+      <div class="cart" @click="displayCart">
         <img src="@/assets/shared/icon-cart.svg" alt="audiophile" />
       </div>
     </div>
@@ -45,11 +45,14 @@
 
 <script>
 export default {
-  emits: ["update:menuOpened"],
+  emits: ["open:menu", "display:cart"],
   methods: {
     toggleMenu() {
-      this.$emit("update:menuOpened");
+      this.$emit("open:menu");
     },
+    displayCart() {
+      this.$emit("display:cart");
+    }
   },
 };
 </script>

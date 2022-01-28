@@ -3,4 +3,10 @@ AUdiophile
 to DO
 
 ProductDetail ->
-	ajouter l'hover a l'ancre de retour "Go back"
+	revoir l'affichage de liste dans in the box section -  
+
+Ui ->
+	Ajouter un nouveau button (taille large) pour le cart et la page checkout
+
+TheHeader ->
+	Retirer remplacer le toggle pour le backdrop par un closeModel()
