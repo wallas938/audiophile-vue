@@ -9,4 +9,5 @@ Ui ->
 	Ajouter un nouveau button (taille large) pour le cart et la page checkout
 
 TheHeader ->
+	Revoir les dimensions du header en mode desktop parce que non aligné avec le contenu de la section home de la home page
 	Retirer remplacer le toggle pour le backdrop par un closeModel()

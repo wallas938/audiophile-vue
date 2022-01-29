@@ -2,7 +2,7 @@
   <div class="mobile-tablet-menu-container">
     <header class="mobile-tablet-header hide-for-desktop">
       <div class="container">
-        <div class="menu" @click="toggleMenu">
+        <div class="menu-icon" @click="toggleMenu">
           <img src="@/assets/shared/icon-hamburger.svg" alt="icon-humburger" />
         </div>
         <div class="logo">
@@ -10,7 +10,7 @@
             ><img src="@/assets/shared/logo.svg" alt="audiophile"
           /></router-link>
         </div>
-        <div class="cart" @click="displayCart">
+        <div class="cart-icon" @click="toggleCart">
           <img src="@/assets/shared/icon-cart.svg" alt="audiophile" />
         </div>
       </div>
@@ -36,7 +36,7 @@
           <router-link to="/category/earphones">Earphones</router-link>
         </li>
       </ul>
-      <div class="cart" @click="displayCart">
+      <div class="cart-icon" @click="displayCart">
         <img src="@/assets/shared/icon-cart.svg" alt="audiophile" />
       </div>
     </div>
@@ -45,14 +45,16 @@
 
 <script>
 export default {
-  emits: ["open:menu", "display:cart"],
+  emits: ["toggle:menu", "toggle:cart"],
   methods: {
     toggleMenu() {
-      this.$emit("open:menu");
+      const isMenuOpened = this.$store.getters["modals"].isMenuOpened;
+      this.$emit("toggle:menu", { isMenuOpened: !isMenuOpened });
     },
-    displayCart() {
-      this.$emit("display:cart");
-    }
+    toggleCart() {
+      const isCartOpened = this.$store.getters["modals"].isCartOpened;
+      this.$emit("toggle:cart", { isCartOpened: !isCartOpened });
+    },
   },
 };
 </script>
@@ -70,7 +72,7 @@ header {
     cursor: pointer;
   }
 
-  .menu > img {
+  .menu-icon > img {
     width: 1.066666rem;
     height: 1rem;
   }
@@ -80,7 +82,7 @@ header {
     height: 1.666666rem;
   }
 
-  .cart > img {
+  .cart-icon > img {
     width: 1.533333rem;
     height: 1.333333rem;
   }
@@ -99,37 +101,36 @@ header {
 @media screen and (min-width: $tablet-min) {
   header {
     padding: 0 2.666666rem;
-
+    .mobile-tablet-menu-container {
+      .mobile-tablet-header .container {
+        padding: 2.133333rem 0rem;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 3.866666rem 9.533333rem auto; // 1.066666rem + 2.8rem = 3.866666rem
+        grid-template-areas: "menu-icon logo cart-icon";
+        justify-content: unset;
+        align-items: center;
+      }
+    }
     .logo {
       grid-area: logo;
     }
 
-    .menu {
+    .menu-icon {
       grid-area: menu;
     }
 
-    .cart {
-      grid-area: cart;
+    .cart-icon {
+      grid-area: cart-icon;
       justify-self: end;
-    }
-  }
-
-  .mobile-tablet-menu-container {
-    .mobile-tablet-header .container {
-      padding: 2.133333rem 0rem;
-      width: 100%;
-      display: grid;
-      grid-template-columns: 3.866666rem 9.533333rem auto; // 1.066666rem + 2.8rem = 3.866666rem
-      grid-template-areas: "menu logo cart";
-      justify-content: unset;
-      align-items: center;
     }
   }
 }
 
 @media screen and (min-width: $desktop-min) {
   header {
-    /* padding: 2.133333rem 1.6rem; */
+    padding-left: 11rem;
+    padding-right: 11rem;
 
     img {
       cursor: pointer;
@@ -161,7 +162,7 @@ header {
       }
     }
 
-    .cart > img {
+    .cart-icon > img {
       width: 1.533333rem;
       height: 1.333333rem;
     }
