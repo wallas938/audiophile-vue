@@ -1,25 +1,13 @@
 <template>
   <div class="audiophile">
     <!-- HEADER -->
-    <the-header @open:menu="toggleMenu" @display:cart="displayCart"></the-header>
+    <the-header
+      @toggle:menu="toggleMenu($event)"
+      @toggle:cart="toggleCart($event)"
+    ></the-header>
 
     <!-- GLOBAL BACKDROP -->
-
-    <div v-if="menuOpened || cartDisplayed" class="menu-backdrop" @click="toggleMenu"></div>
-
-    <!-- MENU FOR MOBILE AND TABLET -->
-    <div v-if="menuOpened" class="menu">
-      <div class="wrapper container">
-        <category-nav @active:navigation="toggleMenu"></category-nav>
-      </div>
-    </div>
-
-    <!-- CART MODAL -->
-    <div v-if="cartDisplayed" class="cart">
-      <div class="wrapper container">
-        <cart-item></cart-item>
-      </div>
-    </div>
+    <modals-handler @close:modals="closeModals"></modals-handler>
 
     <!-- ROUTER PAGES -->
     <router-view></router-view>
@@ -28,29 +16,34 @@
 
 <script>
 import TheHeader from "@/components/layout/TheHeader";
+import ModalsHandler from "@/components/ui/shared/modals/ModalsHandler";
 export default {
   components: {
     TheHeader,
-  },
-  created() {},
-  data() {
-    return {
-      menuOpened: false,
-      cartDisplayed: false,
-    };
-  },
-  watch: {
-    cartDisplayed(val) {
-      console.log(val);
-    }
+    ModalsHandler,
   },
   methods: {
-    toggleMenu() {
-      this.menuOpened = !this.menuOpened;
+    toggleMenu(payload) {
+      this.$store.dispatch("updateModals", {
+        isMenuOpened: payload.isMenuOpened,
+        isCartOpened: false,
+        isOrderOpened: false,
+      });
+      /* this.menuOpened = !this.menuOpened; */
     },
-    displayCart() {
-      console.log(this.cartDisplayed);
-      this.cartDisplayed = !this.cartDisplayed;
+    toggleCart(payload) {
+      this.$store.dispatch("updateModals", {
+        isMenuOpened: false,
+        isCartOpened: payload.isCartOpened,
+        isOrderOpened: false,
+      });
+    },
+    closeModals() {
+      this.$store.dispatch("updateModals", {
+        isMenuOpened: false,
+        isCartOpened: false,
+        isOrderOpened: false,
+      });
     },
   },
 };
@@ -62,17 +55,8 @@ export default {
 
 .audiophile {
   position: relative;
-  .menu-backdrop {
-    position: absolute;
-    top: 6.333333rem;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 3;
-    background-color: rgba($color: #000000, $alpha: 0.4);
-  }
 
-  .menu {
+  /* .menu {
     left: 0;
     right: 0;
     bottom: 0;
@@ -87,7 +71,7 @@ export default {
       overflow: scroll;
       padding: 6.333333rem 1.6rem 2.333333rem 1.6rem;
     }
-  }
+  } */
 
   .footer {
     padding-top: 8rem; // 120px
@@ -96,25 +80,6 @@ export default {
 
 @media screen and (min-width: $tablet-min) {
   .audiophile {
-    .menu-backdrop {
-      top: 6.333333rem;
-    }
-
-    .menu {
-      left: 0;
-      right: 0;
-      bottom: 0;
-      z-index: 3;
-      top: 6.333333rem;
-      position: absolute;
-      height: 22.666666rem;
-      background-color: #fff;
-      .wrapper {
-        display: flex;
-        justify-content: space-between;
-        padding: 7.2rem 2.666666rem 4.466666rem 2.6rem;
-      }
-    }
     .footer {
       padding-top: 6.4rem; // 96px
     }

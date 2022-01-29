@@ -8,7 +8,12 @@ import getters from './getters';
 
 const store = createStore({
   state: {
-    data: [...data]
+    data: [...data],
+    modals: {
+      isMenuOpened: false,
+      isCartOpened: false,
+      isOrderOpened: false
+    }
   },
   getters,
   mutations,

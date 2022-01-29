@@ -2,16 +2,18 @@
   <div class="home">
     <!-- HERO SECTION -->
     <section class="hero">
-      <div class="hero__img"></div>
-      <div class="hero__txt">
-        <p class="new-prd">NEW PRODUCT</p>
-        <h1 class="main-prd-name">XX99 MARK II HEADPHONES</h1>
-        <p class="sales-pitch">
-          Experience natural, lifelike audio and exceptional build quality made
-          for the passionate music enthusiast.
-        </p>
-        <div class="hero__cta">
-          <v-button :path="xx99markii" mode="fill">SEE PRODUCT</v-button>
+      <div class="wrapper container">
+        <div class="hero__img"></div>
+        <div class="hero__txt">
+          <p class="new-prd">NEW PRODUCT</p>
+          <h1 class="main-prd-name">XX99 MARK II HEADPHONES</h1>
+          <p class="sales-pitch">
+            Experience natural, lifelike audio and exceptional build quality
+            made for the passionate music enthusiast.
+          </p>
+          <div class="hero__cta">
+            <v-button :path="xx99markii" mode="fill">SEE PRODUCT</v-button>
+          </div>
         </div>
       </div>
     </section>
