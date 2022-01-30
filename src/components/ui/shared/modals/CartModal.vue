@@ -67,7 +67,9 @@
         <span>$5.396</span>
       </div>
       <div class="cat">
-        <v-button mode="fill" path="/checkout">checkout</v-button>
+        <v-button mode="fill" path="/checkout" :isLarge="true"
+          >checkout</v-button
+        >
       </div>
     </div>
   </div>
@@ -179,6 +181,7 @@ export default {};
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin-bottom: 1.6rem;
 
       & > :first-child {
         font-weight: 500;

@@ -1,16 +1,15 @@
 <template>
-  <router-link :to="navigateTo">
-    <button
-      class="v-button"
-      :class="{
-        fill: mode === 'fill',
-        flat: mode === 'flat',
-        dark: mode === 'dark',
-      }"
-    >
-      <slot></slot>
-    </button>
-  </router-link>
+  <button
+    class="v-button"
+    :class="{
+      fill: mode === 'fill',
+      flat: mode === 'flat',
+      dark: mode === 'dark',
+      large: isLarge
+    }"
+  >
+    <router-link :to="navigateTo"> <slot></slot></router-link>
+  </button>
 </template>
 
 <script>
@@ -19,17 +18,22 @@ export default {
     mode: {
       type: String,
       default: "fill",
-      require: true
+      required: true,
     },
     path: {
       type: String,
-    }
+    },
+    isLarge: {
+      type: Boolean,
+      default: false,
+      required: false,
+    },
   },
   computed: {
     navigateTo() {
       return `${this.path}`;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -75,5 +79,9 @@ button.v-button {
     border: none;
     background-color: $hovered-black;
   }
+}
+
+.large {
+  width: 100%;
 }
 </style>

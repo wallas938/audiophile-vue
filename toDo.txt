@@ -4,7 +4,7 @@ to DO
 
 Global -> 
 	Verifier que les miliers sont séparés par des virgule et non des points
-
+	Revoir les paths vers les produits détaillés ( ex: /category/headphones/xx99-mark-two-headphones )  
 ProductDetail ->
 	revoir l'affichage de liste dans in the box section -  
 
@@ -14,4 +14,7 @@ Ui ->
 TheHeader ->
 	Revoir les dimensions du header en mode desktop parce que non aligné avec le contenu de la section home de la home page
 	Revoir le layout des elements du header en mode tablet
+
+CategoyNav -> 
+	Utiliser inject pour fermer la modal du menu avec la methode parent dédié (App)
 
