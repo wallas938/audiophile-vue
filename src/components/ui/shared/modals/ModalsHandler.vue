@@ -1,9 +1,9 @@
 <template>
-  <div v-if="true" class="modals-handler">
+  <div v-if="false" class="modals-handler">
     <div class="backdrop" @click="closeAllModal"></div>
     <menu-modal v-if="isMenuOpened"></menu-modal>
     <cart-modal v-if="isCartOpened"></cart-modal>
-    <order-modal v-if="true"></order-modal>
+    <order-modal v-if="isOrderOpened"></order-modal>
   </div>
 </template>
 
@@ -47,6 +47,7 @@ export default {
   },
 };
 </script>
+
 <style lang="scss">
 @import "@/sass/_colors.scss";
 @import "@/sass/_variables.scss";

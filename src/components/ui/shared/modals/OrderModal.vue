@@ -30,7 +30,7 @@
       </div>
     </div>
     <div class="cta">
-      <button>BACK TO HOME</button>
+      <v-button :path="'/home'" mode="fill" :isLarge="true">BACK TO HOME</v-button>
     </div>
   </div>
 </template>
@@ -180,21 +180,7 @@ export default {
     }
   }
   .cta {
-    background-color: $orange;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem 0;
-    button {
-      color: #fff;
-      font-weight: bold;
-      font-style: normal;
-      font-size: 0.866666rem;
-      line-height: 17.76px;
-      letter-spacing: 1px;
-      border: none;
-      background-color: transparent;
-    }
+    
   }
 }
 
