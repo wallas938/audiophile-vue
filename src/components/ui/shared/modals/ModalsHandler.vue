@@ -1,5 +1,5 @@
 <template>
-  <div v-if="false" class="modals-handler">
+  <div v-if="oneAtLeast" class="modals-handler">
     <div class="backdrop" @click="closeAllModal"></div>
     <menu-modal v-if="isMenuOpened"></menu-modal>
     <cart-modal v-if="isCartOpened"></cart-modal>

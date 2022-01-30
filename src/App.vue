@@ -22,6 +22,11 @@ export default {
     TheHeader,
     ModalsHandler,
   },
+  provide() {
+    return {
+      toggleMenu: this.toggleMenu,
+    };
+  },
   methods: {
     toggleMenu(payload) {
       this.$store.dispatch("updateModals", {
@@ -29,7 +34,6 @@ export default {
         isCartOpened: false,
         isOrderOpened: false,
       });
-      /* this.menuOpened = !this.menuOpened; */
     },
     toggleCart(payload) {
       this.$store.dispatch("updateModals", {

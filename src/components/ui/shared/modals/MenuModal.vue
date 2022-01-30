@@ -2,21 +2,13 @@
   <!-- MENU FOR MOBILE AND TABLET -->
   <div class="menu">
     <div class="wrapper container">
-      <category-nav @active:navigation="closeMenu"></category-nav>
+      <category-nav @active:navigation="toggleMenu({isMenuOpened: false})"></category-nav>
     </div>
   </div>
 </template>
 <script>
 export default {
-  methods: {
-    closeMenu() {
-      this.$store.dispatch("updateModals", {
-        isMenuOpened: false,
-        isCartOpened: false,
-        isOrderOpened: false,
-      });
-    },
-  },
+  inject: ["toggleMenu"],
 };
 </script>
 <style lang="scss">
