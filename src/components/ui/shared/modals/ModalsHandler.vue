@@ -1,11 +1,12 @@
 <template>
-  <div v-if="oneAtLeast" class="modals-handler">
+  <div v-if="true" class="modals-handler">
     <div class="backdrop" @click="closeAllModal"></div>
     <menu-modal v-if="isMenuOpened"></menu-modal>
     <cart-modal v-if="isCartOpened"></cart-modal>
-    <order-modal v-if="isOrderOpened"></order-modal>
+    <order-modal v-if="true"></order-modal>
   </div>
 </template>
+
 <script>
 import CartModal from "@/components/ui/shared/modals/CartModal";
 import MenuModal from "@/components/ui/shared/modals/MenuModal";
