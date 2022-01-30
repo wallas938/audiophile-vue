@@ -2,6 +2,9 @@ AUdiophile
 
 to DO
 
+Global -> 
+	Verifier que les miliers sont séparés par des virgule et non des points
+
 ProductDetail ->
 	revoir l'affichage de liste dans in the box section -  
 
@@ -10,4 +13,5 @@ Ui ->
 
 TheHeader ->
 	Revoir les dimensions du header en mode desktop parce que non aligné avec le contenu de la section home de la home page
-	Retirer remplacer le toggle pour le backdrop par un closeModel()
+	Revoir le layout des elements du header en mode tablet
+
