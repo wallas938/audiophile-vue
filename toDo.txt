@@ -8,13 +8,6 @@ Global ->
 ProductDetail ->
 	revoir l'affichage de liste dans in the box section -  
 
-Ui ->
-	Ajouter un nouveau button (taille large) pour le cart et la page checkout
-
 TheHeader ->
 	Revoir les dimensions du header en mode desktop parce que non aligné avec le contenu de la section home de la home page
 	Revoir le layout des elements du header en mode tablet
-
-CategoyNav -> 
-	Utiliser inject pour fermer la modal du menu avec la methode parent dédié (App)
-
