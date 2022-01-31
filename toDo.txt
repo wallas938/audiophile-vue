@@ -3,11 +3,13 @@ AUdiophile
 to DO
 
 Global -> 
-	Verifier que les miliers sont séparés par des virgule et non des points
-	Revoir les paths vers les produits détaillés ( ex: /category/headphones/xx99-mark-two-headphones )  
+	#1 - Verifier que les miliers sont séparés par des virgule et non des points
+	#2 - Revoir les paths vers les produits détaillés ( ex: /category/headphones/xx99-mark-two-headphones )  
+
 ProductDetail ->
-	revoir l'affichage de liste dans in the box section -  
+	#3 - revoir l'affichage de liste dans in the box section -
+	#4 - rendre actif le lien de retour en suivant le model de path dans #2
 
 TheHeader ->
-	Revoir les dimensions du header en mode desktop parce que non aligné avec le contenu de la section home de la home page
-	Revoir le layout des elements du header en mode tablet
+	#5 - Revoir les dimensions du header en mode desktop parce que non aligné avec le contenu de la section home de la home page
+	#6 - Revoir le layout des elements du header en mode tablet

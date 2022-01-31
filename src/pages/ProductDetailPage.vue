@@ -2,7 +2,7 @@
   <div class="prd-detail-page">
     <div class="prev">
       <p class="wrapper container">
-        <router-link to=""><a class="prev-link">Go Back</a></router-link>
+        <router-link :to="'../'"><a class="prev-link">Go Back</a></router-link>
       </p>
     </div>
     <section class="prd-main">
@@ -144,6 +144,9 @@ export default {
       const data = this.$store.getters["data"];
       this.product = data.find((data) => data.slug === productName);
     },
+    goBack() {
+      this.$router.back();
+    }
   },
 };
 </script>

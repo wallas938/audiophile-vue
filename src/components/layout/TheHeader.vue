@@ -65,7 +65,6 @@ export default {
 
 header {
   background-color: #0e0e0e;
-  /* padding: 2.133333rem 1.6rem; */
   color: #fff;
 
   img {
@@ -101,23 +100,26 @@ header {
 @media screen and (min-width: $tablet-min) {
   header {
     padding: 0 2.666666rem;
-    .mobile-tablet-menu-container {
-      .mobile-tablet-header .container {
-        padding: 2.133333rem 0rem;
-        width: 100%;
-        display: grid;
-        grid-template-columns: 3.866666rem 9.533333rem auto; // 1.066666rem + 2.8rem = 3.866666rem
-        grid-template-areas: "menu-icon logo cart-icon";
-        justify-content: unset;
-        align-items: center;
-      }
+  }
+
+  .mobile-tablet-menu-container {
+    .mobile-tablet-header .container {
+      padding: 2.133333rem 0rem;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 3.866666rem 9.533333rem auto; // 1.066666rem + 2.8rem = 3.866666rem
+      grid-template-rows: 1fr;
+      grid-template-areas: "menu-icon logo cart-icon";
+      justify-content: unset;
+      align-items: center;
     }
+
     .logo {
       grid-area: logo;
     }
 
     .menu-icon {
-      grid-area: menu;
+      grid-area: menu-icon;
     }
 
     .cart-icon {
