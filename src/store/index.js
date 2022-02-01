@@ -13,7 +13,8 @@ const store = createStore({
       isMenuOpened: false,
       isCartOpened: false,
       isOrderOpened: false
-    }
+    },
+    cart: []
   },
   getters,
   mutations,

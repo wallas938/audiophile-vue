@@ -6,7 +6,13 @@
       </p>
     </div>
     <section class="prd-main">
-      <product-main-info :product="product"></product-main-info>
+      <product-main-info
+        :product="product"
+        :quantity="quantity"
+        @add:quantity="add"
+        @subtract:quantity="subtract"
+        @add:cart="addCart($event)"
+      ></product-main-info>
     </section>
     <div class="feature-in-the-box-block">
       <div class="wrapper">
@@ -121,6 +127,9 @@ export default {
       loading: false,
       product: null,
       error: null,
+      quantity: 1,
+      min: 1,
+      max: 99,
     };
   },
   created() {
@@ -128,6 +137,7 @@ export default {
   },
   watch: {
     productName() {
+      this.resetQuantity();
       this.fetchProduct(this.productName);
     },
   },
@@ -138,6 +148,9 @@ export default {
     others() {
       return this.product.others;
     },
+    quantityCheck() {
+      return this.quantity >= 1 ? this.quantity : 1;
+    },
   },
   methods: {
     fetchProduct(productName) {
@@ -146,7 +159,28 @@ export default {
     },
     goBack() {
       this.$router.back();
-    }
+    },
+    add() {
+      if (this.quantity < this.max) {
+        this.quantity++;
+        return;
+      }
+      this.quantity = this.max;
+    },
+    subtract() {
+      if (this.quantity > this.min) {
+        this.quantity--;
+        return;
+      }
+      this.quantity = this.min;
+    },
+    resetQuantity() {
+      this.quantity = 1;
+    },
+    addCart(payload) {
+      this.resetQuantity();
+      this.$store.dispatch('addCart', { cartItem: payload });
+    },
   },
 };
 </script>

@@ -46,6 +46,11 @@
 <script>
 export default {
   emits: ["toggle:menu", "toggle:cart"],
+  computed: {
+    cart() {
+      return this.$store.getters["cart"];
+    },
+  },
   methods: {
     toggleMenu() {
       const isMenuOpened = this.$store.getters["modals"].isMenuOpened;
@@ -54,6 +59,11 @@ export default {
     toggleCart() {
       const isCartOpened = this.$store.getters["modals"].isCartOpened;
       this.$emit("toggle:cart", { isCartOpened: !isCartOpened });
+    },
+  },
+  watch: {
+    cart() {
+      this.toggleCart();
     },
   },
 };
