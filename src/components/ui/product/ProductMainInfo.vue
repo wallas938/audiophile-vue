@@ -4,41 +4,33 @@
       <picture>
         <source
           media="(min-width: 1440px)"
-          :srcset="
-            require('@/assets/' + imgPath.desktop)
-          "
+          :srcset="require('@/assets/' + imgPath.desktop)"
         />
         <source
           media="(min-width: 768px)"
-          :srcset="
-            require('@/assets/' + imgPath.tablet)
-          "
+          :srcset="require('@/assets/' + imgPath.tablet)"
         />
         <source
           media="(max-width: 376px)"
-          :srcset="
-            require('@/assets/' + imgPath.mobile)
-          "
+          :srcset="require('@/assets/' + imgPath.mobile)"
         />
-        <img
-          :src="require('@/assets/' + imgPath.mobile)"
-        />
+        <img :src="require('@/assets/' + imgPath.mobile)" />
       </picture>
     </div>
     <div class="prd-body">
       <p v-if="product.new" class="new-prd">NEW PRODUCT</p>
-      <h1 class="prd-name">{{product.name}}</h1>
+      <h1 class="prd-name">{{ product.name }}</h1>
       <p class="prd-desc">
-        {{product.description}}
+        {{ product.description }}
       </p>
-      <p class="prd-price">$ {{product.price}}</p>
+      <p class="prd-price">$ {{ product.price }}</p>
       <div class="cta">
         <div class="prd-qty">
-          <span class="minus">-</span>
-          <span>1</span>
-          <span class="plus">+</span>
+          <span class="minus" @click="subtract">-</span>
+          <span>{{ quantity }}</span>
+          <span class="plus" @click="add">+</span>
         </div>
-        <v-button :mode="'fill'" :path="'/cart/XX99_MARK_II_HEADPHONES'">ADD TO CART</v-button>
+        <button class="addToCart" @click="addCart">ADD TO CART</button>
       </div>
     </div>
   </div>
@@ -46,10 +38,32 @@
 
 <script>
 export default {
-  props: ["product"],
+  props: ["product", "quantity"],
+  emits: ["add:quantity", "subtract:quantity", "add:cart"],
   computed: {
     imgPath() {
       return this.product.image;
+    },
+  },
+  methods: {
+    add() {
+      if (this.quantity < 99) {
+        this.$emit("add:quantity");
+      }
+    },
+    subtract() {
+      if (this.quantity > 1) {
+        this.$emit("subtract:quantity");
+      }
+    },
+    addCart() {
+      this.$emit("add:cart", {
+        id: this.product.id,
+        saleName: this.product.saleName,
+        price: this.product.price,
+        quantity: this.quantity,
+        image: `image-${this.product.slug}.jpg`,
+      });
     },
   },
 };
@@ -119,6 +133,9 @@ export default {
       & > .plus {
         color: rgba($color: #000000, $alpha: 0.25);
         cursor: pointer;
+        &:hover {
+          color: $orange;
+        }
       }
     }
 
@@ -126,6 +143,21 @@ export default {
       display: flex;
       justify-content: flex-start;
       align-items: center;
+
+      button {
+        padding: 1rem 2.1rem;
+        font-size: 0.866666rem;
+        font-weight: bold;
+        font-style: normal;
+        line-height: 17.76px;
+        letter-spacing: 1px;
+        color: #fff;
+        border: none;
+        background-color: $orange;
+        &:hover {
+          background-color: $hovered-orange;
+        }
+      }
     }
   }
 }

@@ -2,60 +2,28 @@
   <div class="cart">
     <div class="cart__header">
       <p>
-        <span>CART (3)</span>
-        <button class="remove">Remove All</button>
+        <span>CART ({{ cartItemNumber }})</span>
+        <button class="remove" @click="removeCart">Remove All</button>
       </p>
     </div>
 
     <div class="cart__body">
-      <div class="list-item">
-        <div class="item">
+      <div v-if="!!cart" class="list-item">
+        <div class="item" v-for="cartItem in cart" :key="cartItem.saleName">
           <div class="left">
-            <img
-              :src="
-                require('@/assets/' + 'cart/image-xx99-mark-two-headphones.jpg')
-              "
-            />
+            <div class="img-container">
+              <img :src="require('@/assets/cart/' + cartItem.image)" />
+            </div>
             <div class="item__details">
-              <p class="name">XX99 MK II</p>
-              <p class="price">$ 2,999</p>
+              <p class="name">{{ cartItem.saleName }}</p>
+              <p class="price">$ {{ cartItem.price }}</p>
             </div>
           </div>
 
           <div class="qty right">
-            <span>-</span>
-            <span>1</span>
-            <span>+</span>
-          </div>
-        </div>
-        <div class="item">
-          <div class="left">
-            <img
-              :src="require('@/assets/' + 'cart/image-xx59-headphones.jpg')"
-            />
-            <div class="item__details">
-              <p class="name">XX59</p>
-              <p class="price">XX59</p>
-            </div>
-          </div>
-          <div class="qty right">
-            <span>-</span>
-            <span>1</span>
-            <span>+</span>
-          </div>
-        </div>
-        <div class="item">
-          <div class="left">
-            <img :src="require('@/assets/' + 'cart/image-yx1-earphones.jpg')" />
-            <div class="item__details">
-              <p class="name">YX1</p>
-              <p class="price">$ 599</p>
-            </div>
-          </div>
-          <div class="qty right">
-            <span>-</span>
-            <span>1</span>
-            <span>+</span>
+            <span class="minus" @click="subtract(cartItem.saleName)">-</span>
+            <span> {{ cartItem.quantity }} </span>
+            <span class="plus" @click="add(cartItem.saleName)">+</span>
           </div>
         </div>
       </div>
@@ -64,7 +32,7 @@
     <div class="cart__footer">
       <div class="total">
         <span>TOTAL</span>
-        <span>$5.396</span>
+        <span>$ {{ total }}</span>
       </div>
       <div class="cat">
         <v-button mode="fill" path="/checkout" :isLarge="true"
@@ -76,7 +44,72 @@
 </template>
 
 <script>
-export default {};
+export default {
+  emits: ["save:cart", "remove:cart"],
+  data() {
+    return {
+      cart: [],
+      total: 0,
+    };
+  },
+  created() {
+    this.cart = [...this.$store.getters["cart"]];
+    this.computeTotal();
+  },
+  methods: {
+    add(saleName) {
+      let cartCopy = this.cart;
+      const cartItemIndex = cartCopy.findIndex((c) => c.saleName === saleName);
+      if (cartCopy[cartItemIndex].quantity < 99) {
+        let cartItemUpdated = {
+          ...cartCopy[cartItemIndex],
+          quantity: cartCopy[cartItemIndex].quantity + 1,
+        };
+        cartCopy.splice(cartItemIndex, 1, cartItemUpdated);
+        this.cart = cartCopy;
+        this.$emit("save:cart", cartCopy);
+        this.computeTotal();
+      }
+    },
+    subtract(saleName) {
+      let cartCopy = this.cart;
+      const cartItemIndex = cartCopy.findIndex((c) => c.saleName === saleName);
+      if (cartCopy[cartItemIndex].quantity > 1) {
+        let cartItemUpdated = {
+          ...cartCopy[cartItemIndex],
+          quantity: cartCopy[cartItemIndex].quantity - 1,
+        };
+        cartCopy.splice(cartItemIndex, 1, cartItemUpdated);
+        this.cart = cartCopy;
+        this.$emit("save:cart", cartCopy);
+        this.computeTotal();
+      }
+    },
+    computeTotal() {
+      let total = 0;
+      if (this.cart.length > 0) {
+        this.cart.forEach((c) => {
+          total += c.price * c.quantity;
+        });
+      }
+      this.total = total.toLocaleString("en-US");
+    },
+    cartReset() {
+      this.cart = [];
+      this.total = 0;
+    },
+    removeCart() {
+      console.log("removeCart");
+      this.cartReset();
+      this.$emit("remove:cart");
+    },
+  },
+  computed: {
+    cartItemNumber() {
+      return this.cart.length;
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -133,11 +166,17 @@ export default {};
         .left {
           display: flex;
           justify-content: flex-start;
-          img {
+          align-items: center;
+
+          .img-container {
             width: 4.266666rem;
             height: 4.266666rem;
-            display: inline-block;
             border-radius: 0.533333rem;
+          }
+
+          .img-container img {
+            width: 100%;
+            height: 100%;
           }
 
           .item__details {
@@ -166,10 +205,13 @@ export default {};
           background-color: $grey;
           width: 6.333333rem;
 
-          & > .minus,
-          & > .plus {
+          .minus,
+          .plus {
             color: rgba($color: #000000, $alpha: 0.25);
             cursor: pointer;
+            &:hover {
+              color: $orange;
+            }
           }
         }
       }

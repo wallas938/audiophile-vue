@@ -4,5 +4,8 @@ export default {
   },
   modals(state) {
     return state.modals;
+  },
+  cart(state) {
+    return state.cart;
   }
 };

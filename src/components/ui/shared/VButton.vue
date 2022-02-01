@@ -22,6 +22,7 @@ export default {
     },
     path: {
       type: String,
+      required: false,
     },
     isLarge: {
       type: Boolean,

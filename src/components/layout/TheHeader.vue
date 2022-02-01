@@ -36,7 +36,7 @@
           <router-link to="/category/earphones">Earphones</router-link>
         </li>
       </ul>
-      <div class="cart-icon" @click="displayCart">
+      <div class="cart-icon" @click="toggleCart">
         <img src="@/assets/shared/icon-cart.svg" alt="audiophile" />
       </div>
     </div>
@@ -46,14 +46,27 @@
 <script>
 export default {
   emits: ["toggle:menu", "toggle:cart"],
+  computed: {
+    cart() {
+      return this.$store.getters["cart"];
+    },
+  },
   methods: {
     toggleMenu() {
       const isMenuOpened = this.$store.getters["modals"].isMenuOpened;
       this.$emit("toggle:menu", { isMenuOpened: !isMenuOpened });
     },
     toggleCart() {
-      const isCartOpened = this.$store.getters["modals"].isCartOpened;
+      const isCartOpened = this.$store.getters["modals"].isCartOpened; 
       this.$emit("toggle:cart", { isCartOpened: !isCartOpened });
+      if (!isCartOpened) {
+        this.$store.dispatch("updateCart", { cart: this.cart });
+      }
+    },
+  },
+  watch: {
+    cart() {
+      this.$emit("toggle:cart", { isCartOpened: true });
     },
   },
 };
