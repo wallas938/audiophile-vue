@@ -16,7 +16,7 @@
             </div>
             <div class="item__details">
               <p class="name">{{ cartItem.saleName }}</p>
-              <p class="price">$ {{ cartItem.price }}</p>
+              <p class="price">$ {{ cartItem.price.toLocaleString("en-US") }}</p>
             </div>
           </div>
 
