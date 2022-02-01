@@ -23,7 +23,7 @@
       <p class="prd-desc">
         {{ product.description }}
       </p>
-      <p class="prd-price">$ {{ product.price }}</p>
+      <p class="prd-price">$ {{ formatedPrice }}</p>
       <div class="cta">
         <div class="prd-qty">
           <span class="minus" @click="subtract">-</span>
@@ -44,6 +44,9 @@ export default {
     imgPath() {
       return this.product.image;
     },
+    formatedPrice() {
+      return this.product.price.toLocaleString("en-US");
+    }
   },
   methods: {
     add() {
