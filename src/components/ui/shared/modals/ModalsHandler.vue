@@ -2,7 +2,7 @@
   <div v-if="oneAtLeast" class="modals-handler">
     <div class="backdrop" @click="closeAllModal"></div>
     <menu-modal v-if="isMenuOpened"></menu-modal>
-    <cart-modal v-if="isCartOpened" @save:cart="saveCart"></cart-modal>
+    <cart-modal v-if="isCartOpened" @save:cart="saveCart" @remove:cart="removeCart"></cart-modal>
     <order-modal v-if="isOrderOpened"></order-modal>
   </div>
 </template>
@@ -18,11 +18,6 @@ export default {
     CartModal,
     MenuModal,
     OrderModal,
-  },
-  data() {
-    return {
-      cart: []
-    };
   },
   computed: {
     oneAtLeast() {
@@ -45,11 +40,14 @@ export default {
         isCartOpened: false,
         isOrderOpened: false,
       });
-      this.$store.dispatch("updateCart", { cart: this.cart });
     },
     saveCart(payload) {
-      this.cart = payload;
+      this.$store.dispatch("updateCart", { cart: payload });
     },
+    removeCart() {
+      console.log("removeCart");
+      this.$store.dispatch("updateCart", { cart: [] });
+    }
   },
 };
 </script>

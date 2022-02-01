@@ -3,13 +3,13 @@
     <div class="cart__header">
       <p>
         <span>CART ({{ cartItemNumber }})</span>
-        <button class="remove">Remove All</button>
+        <button class="remove" @click="removeCart">Remove All</button>
       </p>
     </div>
 
     <div class="cart__body">
       <div v-if="!!cart" class="list-item">
-        <div class="item" v-for="cartItem in cart" :key="cartItem.id">
+        <div class="item" v-for="cartItem in cart" :key="cartItem.saleName">
           <div class="left">
             <div class="img-container">
               <img :src="require('@/assets/cart/' + cartItem.image)" />
@@ -45,7 +45,7 @@
 
 <script>
 export default {
-  emits: ["save:cart"],
+  emits: ["save:cart", "remove:cart"],
   data() {
     return {
       cart: [],
@@ -58,28 +58,30 @@ export default {
   },
   methods: {
     add(saleName) {
-      const cartItem = this.cart.find((c) => c.saleName === saleName);
-      if (cartItem.quantity < 99) {
-        let cartItemUpdated = { ...cartItem, quantity: cartItem.quantity + 1 };
-        const cartUpdated = this.cart.filter(
-          (c) => c.saleName !== cartItemUpdated.saleName
-        );
-        cartUpdated.push(cartItemUpdated);
-        this.cart = [...cartUpdated];
-        this.$emit("save:cart", cartUpdated);
+      let cartCopy = this.cart;
+      const cartItemIndex = cartCopy.findIndex((c) => c.saleName === saleName);
+      if (cartCopy[cartItemIndex].quantity < 99) {
+        let cartItemUpdated = {
+          ...cartCopy[cartItemIndex],
+          quantity: cartCopy[cartItemIndex].quantity + 1,
+        };
+        cartCopy.splice(cartItemIndex, 1, cartItemUpdated);
+        this.cart = cartCopy;
+        this.$emit("save:cart", cartCopy);
         this.computeTotal();
       }
     },
     subtract(saleName) {
-      const cartItem = this.cart.find((c) => c.saleName === saleName);
-      if (cartItem.quantity > 1) {
-        let cartItemUpdated = { ...cartItem, quantity: cartItem.quantity - 1 };
-        const cartUpdated = this.cart.filter(
-          (c) => c.saleName !== cartItemUpdated.saleName
-        );
-        cartUpdated.push(cartItemUpdated);
-        this.cart = [...cartUpdated];
-        this.$emit("save:cart", cartUpdated);
+      let cartCopy = this.cart;
+      const cartItemIndex = cartCopy.findIndex((c) => c.saleName === saleName);
+      if (cartCopy[cartItemIndex].quantity > 1) {
+        let cartItemUpdated = {
+          ...cartCopy[cartItemIndex],
+          quantity: cartCopy[cartItemIndex].quantity - 1,
+        };
+        cartCopy.splice(cartItemIndex, 1, cartItemUpdated);
+        this.cart = cartCopy;
+        this.$emit("save:cart", cartCopy);
         this.computeTotal();
       }
     },
@@ -90,8 +92,16 @@ export default {
           total += c.price * c.quantity;
         });
       }
-      console.log(total);
-      this.total = total;
+      this.total = total.toLocaleString("en-US");
+    },
+    cartReset() {
+      this.cart = [];
+      this.total = 0;
+    },
+    removeCart() {
+      console.log("removeCart");
+      this.cartReset();
+      this.$emit("remove:cart");
     },
   },
   computed: {
