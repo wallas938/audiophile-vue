@@ -112,7 +112,7 @@ export default {
     .prd-desc {
       line-height: 25px;
       font-weight: 500;
-      font-weight: normal;
+      font-style: normal;
       color: rgba($color: #000000, $alpha: 0.5);
     }
 
@@ -168,7 +168,6 @@ export default {
 @media screen and (min-width: $tablet-min) {
   .prd-main-info {
     display: flex;
-    justify-content: space-between;
     align-items: center;
 
     .prd-img {
@@ -179,6 +178,7 @@ export default {
 
     .prd-body {
       width: 22.633333rem;
+      margin-left: 4.6rem; // 69px
 
       .prd-desc {
         margin-bottom: 1.6rem; // 24px
@@ -192,42 +192,6 @@ export default {
         line-height: 32px;
         margin-bottom: 2.133333rem;
       }
-
-      .prd-desc {
-        line-height: 25px;
-        font-weight: 500;
-        font-weight: normal;
-        color: rgba($color: #000000, $alpha: 0.5);
-      }
-
-      .prd-price {
-        font-weight: bold;
-        font-size: 1.2rem;
-        line-height: 24.59px;
-        letter-spacing: 1.29px;
-        margin-bottom: 2.066666rem;
-      }
-
-      .prd-qty {
-        padding: 1rem 1.033333rem;
-        width: 8rem; //120px
-        display: flex;
-        justify-content: space-between;
-        background-color: $grey;
-        margin-right: 1.066666rem;
-
-        & > .minus,
-        & > .plus {
-          color: rgba($color: #000000, $alpha: 0.25);
-          cursor: pointer;
-        }
-      }
-
-      .cta {
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-      }
     }
   }
 }
@@ -240,9 +204,9 @@ export default {
     }
 
     .prd-body {
-      width: 29.666666rem;
+      margin-left: 8.3rem; // 124.5px
+      width: 29.7rem; // 445.5px
       .new-prd {
-        margin-bottom: 1.066666rem; // 16px
         font-size: 0.9333333rem;
         line-height: 19.12px;
         letter-spacing: 0.666666rem;
