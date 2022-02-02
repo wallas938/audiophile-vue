@@ -1,42 +1,28 @@
 <template>
-  <div class="category-item" :class="{'flex-reverse': product.id % 2 !== 0}">
+  <div class="category-item" :class="{ 'flex-reverse': product.id % 2 !== 0 }">
     <div class="prd-img">
       <picture>
         <source
           media="(min-width: 1440px)"
-          :srcset="
-            require('@/assets/' +
-              product.categoryImage.desktop)
-          "
+          :srcset="require('@/assets/' + product.categoryImage.desktop)"
         />
         <source
           media="(min-width: 768px)"
-          :srcset="
-            require('@/assets/' +
-              product.categoryImage.tablet)
-          "
+          :srcset="require('@/assets/' + product.categoryImage.tablet)"
         />
         <source
           media="(max-width: 376px)"
-          :srcset="
-            require('@/assets/' +
-              product.categoryImage.mobile)
-          "
+          :srcset="require('@/assets/' + product.categoryImage.mobile)"
         />
-        <img
-          :src="
-            require('@/assets/' +
-              product.categoryImage.mobile)
-          "
-        />
+        <img :src="require('@/assets/' + product.categoryImage.mobile)" />
       </picture>
     </div>
     <div class="prd-body">
       <p v-if="product.new" class="new-prd">NEW PRODUCT</p>
-      <h1 class="prd-name">{{product.name.toUpperCase()}}</h1>
-      <p class="prd-desc">{{product.description}}</p>
+      <h1 class="prd-name">{{ product.name.toUpperCase() }}</h1>
+      <p class="prd-desc">{{ product.description }}</p>
       <div class="cta">
-        <v-button :mode="'fill'" :path="imgPath">SEE PRODUCT</v-button>
+        <v-button :mode="'fill'" :path="navigateTo">SEE PRODUCT</v-button>
       </div>
     </div>
   </div>
@@ -46,8 +32,8 @@
 export default {
   props: ["product"],
   computed: {
-    imgPath() {
-      return `/product-detail/${this.product.slug}`;
+    navigateTo() {
+      return `/category/${this.product.category}/${this.product.slug}`;
     },
   },
 };

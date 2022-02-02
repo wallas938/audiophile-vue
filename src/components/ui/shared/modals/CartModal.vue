@@ -99,7 +99,6 @@ export default {
       this.total = 0;
     },
     removeCart() {
-      console.log("removeCart");
       this.cartReset();
       this.$emit("remove:cart");
     },

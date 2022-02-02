@@ -3,7 +3,6 @@ AUdiophile
 to DO
 
 Global -> 
-	#1 - Verifier que les miliers sont séparés par des virgule et non des points
 	#2 - Revoir les paths vers les produits détaillés ( ex: /category/headphones/xx99-mark-two-headphones )  
 
 ProductDetail ->

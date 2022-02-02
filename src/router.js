@@ -13,7 +13,7 @@ export default createRouter({
   routes: [
     { path: '/', redirect: '/home' },
     { path: '/home', component: HomePage },
-    { path: '/product-detail/:productName', component: ProductDetailPage, props: true },
+    { path: '/category/:categoryName/:productName', component: ProductDetailPage, props: true },
     { path: '/category/', redirect: '/category/headphones' },
     { path: '/category/:categoryName', component: CategoryPage, props: true },
     { path: '/:notFound(.*)', component: NotFoundPage },
