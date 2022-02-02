@@ -140,16 +140,16 @@ export default {
       return "home";
     },
     xx99markii() {
-      return "/product-detail/xx99-mark-two-headphones";
+      return "/category/headphones/xx99-mark-two-headphones";
     },
     zx9speaker() {
-      return "/product-detail/zx9-speaker";
+      return "/category/speakers/zx9-speaker";
     },
     zx7speaker() {
-      return "/product-detail/zx7-speaker";
+      return "/category/speakers/zx7-speaker";
     },
     yx1earphones() {
-      return "/product-detail/yx1-earphones";
+      return "/category/earphones/yx1-earphones";
     },
   },
 };

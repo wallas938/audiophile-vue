@@ -17,7 +17,7 @@
         <img :src="require('@/assets/' + imgPath.mobile)" />
       </picture>
     </div>
-    <h1>{{other.name}}</h1>
+    <h1>{{ other.name }}</h1>
     <div class="cta">
       <v-button :mode="'fill'" :path="navigateTo">SEE PRODUCT</v-button>
     </div>
@@ -32,11 +32,11 @@ export default {
       return this.other.image;
     },
     navigateTo() {
-      return `/product-detail/${this.other.slug}`;
+      return `/category/${this.other.category}/${this.other.slug}`;
     },
     slug() {
       return this.other.slug.toUpperCase();
-    }
+    },
   },
 };
 </script>
