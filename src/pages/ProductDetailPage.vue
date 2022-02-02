@@ -2,7 +2,7 @@
   <div class="prd-detail-page">
     <div class="prev">
       <p class="wrapper container">
-        <router-link :to="'../'"><a class="prev-link">Go Back</a></router-link>
+        <a @click="goBack" class="prev-link">Go Back</a>
       </p>
     </div>
     <section class="prd-main">
@@ -158,7 +158,7 @@ export default {
       this.product = data.find((data) => data.slug === productName);
     },
     goBack() {
-      this.$router.back();
+      this.$router.go(-1);
     },
     add() {
       if (this.quantity < this.max) {
@@ -179,7 +179,7 @@ export default {
     },
     addCart(payload) {
       this.resetQuantity();
-      this.$store.dispatch('addCart', { cartItem: payload });
+      this.$store.dispatch("addCart", { cartItem: payload });
     },
   },
 };
@@ -258,6 +258,7 @@ export default {
             font-style: normal;
             line-height: 25px;
             font-weight: 500;
+            width: max-content;
           }
         }
 
@@ -435,12 +436,13 @@ export default {
     }
 
     .prd-main {
-      padding: 1.6rem 2.666666rem 0 2.6rem;
+      padding: 1.6rem 11rem 0 11rem;
     }
 
     .feature-in-the-box-block {
-      padding: 8rem 2.666666rem 0 2.6rem;
+      padding: 8rem 11rem 0 11rem;
       > .wrapper {
+        padding: 0 12rem 0 0;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
@@ -460,7 +462,7 @@ export default {
       }
 
       .in-the-box {
-        padding: 0 12rem 0 0;
+        padding: 0 0 0 0;
 
         .wrapper {
           display: flex;
