@@ -100,7 +100,7 @@ export default {
   .purchase-summary {
     border-radius: 0.533333rem;
     .item-list {
-      background-color: $grey;
+      background-color: $white;
       padding: 1.6rem;
       border-radius: 0.533333rem 0.533333rem 0 0;
       .item {

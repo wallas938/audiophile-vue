@@ -39,7 +39,7 @@ export default {
 
 .cat-nav {
   .item {
-    background-color: $grey;
+    background-color: $white;
     border-radius: 0.533333rem;
     height: 11rem;
     position: relative;

@@ -34,8 +34,8 @@
         <span>TOTAL</span>
         <span>$ {{ total }}</span>
       </div>
-      <div class="cat">
-        <v-button mode="fill" path="/checkout" :isLarge="true"
+      <div class="cta">
+        <v-button :disabled="!cartItemNumber > 0" mode="fill" path="/checkout" :isLarge="true"
           >checkout</v-button
         >
       </div>
@@ -201,7 +201,7 @@ export default {
           display: flex;
           justify-content: space-between;
           align-items: center;
-          background-color: $grey;
+          background-color: $white;
           width: 6.333333rem;
 
           .minus,
@@ -238,6 +238,9 @@ export default {
     }
 
     .cta {
+      button {
+        
+      }
     }
   }
 }
