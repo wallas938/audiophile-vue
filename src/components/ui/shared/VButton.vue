@@ -32,7 +32,7 @@ export default {
   },
   computed: {
     navigateTo() {
-      return `${this.path}`;
+      return this.path ? `${this.path}` : "#";
     },
   },
 };

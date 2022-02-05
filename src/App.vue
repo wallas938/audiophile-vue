@@ -25,6 +25,7 @@ export default {
   provide() {
     return {
       toggleMenu: this.toggleMenu,
+      closeModals: this.closeModals
     };
   },
   methods: {

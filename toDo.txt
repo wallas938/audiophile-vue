@@ -3,6 +3,9 @@ AUdiophile
 to DO
 
 Global -> 
+            revoir la fermeture des modals lors de la navigation
 
-ProductDetail ->
-	#5 - corriger le click sur les liens vers de nouveaux produits (click * 2) 
+CheckoutPage ->
+
+             ajouter text + icon lorsqu'on choisi le paiement en cash voir maquette desktop active
+	

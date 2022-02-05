@@ -324,7 +324,7 @@ export default {
       .prd-body {
         border-radius: 0.533333rem;
         padding: 2.7333333rem 0 2.7333333rem 1.6rem;
-        background-color: $grey;
+        background-color: $white;
         h1 {
           margin-bottom: 2.133333rem;
           font-weight: bold;
@@ -455,7 +455,7 @@ export default {
         .prd-body {
           border-radius: 0.533333rem;
           padding: 6.7333333rem 0 0 2.7333333rem;
-          background-color: $grey;
+          background-color: $white;
           margin-left: 1.6rem;
 
           .cta {

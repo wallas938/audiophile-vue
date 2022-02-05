@@ -129,7 +129,7 @@ export default {
       width: 8rem; //120px
       display: flex;
       justify-content: space-between;
-      background-color: $grey;
+      background-color: $white;
       margin-right: 1.066666rem;
 
       & > .minus,
