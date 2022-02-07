@@ -1,9 +1,15 @@
 <template>
   <div v-if="oneAtLeast" class="modals-handler">
-    <div class="backdrop" @click="closeAllModal"></div>
+    <div id="backdrop-hash" class="backdrop" @click="closeAllModal"></div>
     <menu-modal v-if="isMenuOpened"></menu-modal>
-    <cart-modal v-if="isCartOpened" @save:cart="saveCart" @remove:cart="removeCart"></cart-modal>
-    <order-modal v-if="isOrderOpened"></order-modal>
+    <cart-modal
+      v-if="isCartOpened"
+      @save:cart="saveCart"
+      @remove:cart="removeCart"
+    ></cart-modal>
+    <order-modal
+      v-if="isOrderOpened"
+    ></order-modal>
   </div>
 </template>
 
@@ -45,9 +51,8 @@ export default {
       this.$store.dispatch("updateCart", { cart: payload });
     },
     removeCart() {
-      console.log("removeCart");
       this.$store.dispatch("updateCart", { cart: [] });
-    }
+    },
   },
 };
 </script>

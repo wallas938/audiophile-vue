@@ -117,6 +117,7 @@
 import ProductMainInfo from "@/components/ui/product/ProductMainInfo";
 import OtherProductList from "@/components/ui/product/OtherProductList";
 export default {
+  inject: ["closeModals"],
   props: ["productName"],
   components: {
     ProductMainInfo,
@@ -133,6 +134,7 @@ export default {
     };
   },
   created() {
+    this.closeModals();
     this.fetchProduct(this.productName);
   },
   watch: {

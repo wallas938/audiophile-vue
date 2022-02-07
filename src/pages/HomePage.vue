@@ -134,7 +134,11 @@
 import WhoWeAre from "../components/ui/shared/WhoWeAre.vue";
 
 export default {
+  inject: ["closeModals"],
   components: { WhoWeAre },
+  created() {
+    this.closeModals();
+  },
   computed: {
     prdFolder() {
       return "home";

@@ -9,40 +9,118 @@
       <p>You will receive an email confirmation shortly.</p>
     </div>
     <div class="purchase-summary">
-      <div class="item-list">
+      <div v-if="cart.length > 1 && hiddenItems" class="item-list">
         <div class="item">
           <div class="img-container">
-            <img :src="require('@/assets/' + imgPath)" alt="product image" />
+            <img
+              :src="require('@/assets/cart/' + cart[0].image)"
+              alt="product image"
+            />
           </div>
           <div class="item-detail">
             <div>
-              <p>XX99 MK II</p>
-              <p>$ 2,999</p>
+              <p>{{ cart[0].saleName }}</p>
+              <p>$ {{ cart[0].price }}</p>
             </div>
-            <p class="qty">x1</p>
+            <p class="qty">x{{ cart[0].quantity }}</p>
           </div>
         </div>
-        <p class="hidden-items" v-if="true">and 2 other item(s)</p>
+        <p
+          @click="displayOtherItem"
+          class="hidden-items"
+          v-if="cart.length > 1"
+        >
+          and {{ cart.length - 1 }} other item(s)
+        </p>
+      </div>
+      <div v-else-if="cart.length > 1 && !hiddenItems" class="item-list">
+        <div class="item" v-for="item in cart" :key="item.saleName">
+          <div class="img-container">
+            <img
+              :src="require('@/assets/cart/' + item.image)"
+              alt="product image"
+            />
+          </div>
+          <div class="item-detail">
+            <div>
+              <p>{{ item.saleName }}</p>
+              <p>$ {{ item.price }}</p>
+            </div>
+            <p class="qty">x{{ item.quantity }}</p>
+          </div>
+        </div>
+        <p @click="displayOtherItem" class="hidden-items">View less</p>
+      </div>
+      <div v-else class="item-list">
+        <div v-if="!!cart.length" class="item">
+          <div class="img-container">
+            <img
+              :src="require('@/assets/cart/' + cart[0].image)"
+              alt="product image"
+            />
+          </div>
+          <div class="item-detail">
+            <div>
+              <p>{{ cart[0].saleName }}</p>
+              <p>$ {{ cart[0].price }}</p>
+            </div>
+            <p class="qty">x{{ cart[0].quantity }}</p>
+          </div>
+        </div>
       </div>
       <div class="grand-total">
         <p>GRAND TOTAL</p>
-        <p>$ 5,446</p>
+        <p>{{ total }}</p>
       </div>
     </div>
     <div class="cta">
-      <v-button :path="'/home'" mode="fill" :isLarge="true">BACK TO HOME</v-button>
+      <v-button :path="'/home'" mode="fill" :isLarge="true"
+        >BACK TO HOME</v-button
+      >
     </div>
   </div>
 </template>
+
 <script>
 export default {
+  data() {
+    return {
+      hiddenItems: true,
+    };
+  },
+  created() {
+    this.$router.push({path:'/checkout' , hash:'#backdrop-hash'})
+  },
   computed: {
     imgPath() {
       return "cart/image-xx99-mark-two-headphones.jpg";
     },
+    total() {
+      let total = 0;
+      if (this.cart.length > 0) {
+        this.cart.forEach((c) => {
+          total += c.price * c.quantity;
+        });
+      }
+      /* if (this.$store.getters["cart"].length > 0) {
+        this.$store.getters["cart"].forEach((c) => {
+          total += c.price * c.quantity;
+        });
+      } */
+      return total.toLocaleString("en-US");
+    },
+    cart() {
+      return this.$store.getters['cart'];
+    }
+  },
+  methods: {
+    displayOtherItem() {
+      this.hiddenItems = !this.hiddenItems;
+    },
   },
 };
 </script>
+
 <style lang="scss">
 @import "@/sass/_colors.scss";
 @import "@/sass/_variables.scss";
@@ -101,7 +179,7 @@ export default {
     border-radius: 0.533333rem;
     .item-list {
       background-color: $white;
-      padding: 1.6rem;
+      padding: 1.6rem 1.6rem 1.666666rem 1.6rem;
       border-radius: 0.533333rem 0.533333rem 0 0;
       .item {
         display: flex;
@@ -153,6 +231,7 @@ export default {
         letter-spacing: -0.21px;
         color: rgba($color: #000000, $alpha: 0.5);
         text-align: center;
+        cursor: pointer;
       }
     }
 
@@ -180,7 +259,6 @@ export default {
     }
   }
   .cta {
-    
   }
 }
 
@@ -217,9 +295,7 @@ export default {
       .item-list {
         flex: 1;
         border-radius: 0.533333rem 0 0 0.533333rem;
-        padding-bottom: 0;
         .item {
-
           .item-detail {
             margin-left: 1.066666rem;
           }
@@ -257,6 +333,9 @@ export default {
       }
 
       .grand-total {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
         padding: 2.733333rem 0 2.8rem 2.133333rem;
       }
     }

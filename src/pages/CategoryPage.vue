@@ -33,9 +33,18 @@
 import CategoryItem from "@/components/ui/category/CategoryItem";
 
 export default {
+  inject: ["closeModals"],
   props: ["categoryName"],
   components: {
     CategoryItem,
+  },
+  watch: {
+    categoryName() {
+      this.closeModals();
+    },
+  },
+  created() {
+    this.closeModals();
   },
   computed: {
     products() {

@@ -1,14 +1,29 @@
 <template>
   <button
+    v-if="path"
     class="v-button"
     :class="{
       fill: mode === 'fill',
       flat: mode === 'flat',
       dark: mode === 'dark',
-      large: isLarge
+      large: isLarge,
     }"
   >
-    <router-link :to="navigateTo"> <slot></slot></router-link>
+    <router-link :to="navigateTo">
+      <slot></slot>
+    </router-link>
+  </button>
+  <button
+    v-else
+    class="v-button"
+    :class="{
+      fill: mode === 'fill',
+      flat: mode === 'flat',
+      dark: mode === 'dark',
+      large: isLarge,
+    }"
+  >
+    <slot></slot>
   </button>
 </template>
 
@@ -32,7 +47,7 @@ export default {
   },
   computed: {
     navigateTo() {
-      return this.path ? `${this.path}` : "#";
+      return `${this.path}`;
     },
   },
 };
