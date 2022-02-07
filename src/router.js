@@ -20,8 +20,8 @@ export default createRouter({
     { path: '/checkout', component: CheckOutPage },
     { path: '/:notFound(.*)', component: NotFoundPage },
   ],
-  scrollBehavior() {
-    // always scroll to top
+  scrollBehavior () {
+    // return desired position
     return { top: 0 }
-  },
+  }
 });

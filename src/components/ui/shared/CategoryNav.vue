@@ -23,11 +23,9 @@
 
 <script>
 export default {
-  emits: ["active:navigation"],
   methods: {
     navigateTo(path) {
       this.$router.push(`/category/${path}`);
-      this.$emit("active:navigation");
     }
   }
 };

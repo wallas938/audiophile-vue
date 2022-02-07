@@ -231,7 +231,10 @@
         </div>
       </section>
       <section class="summary">
-        <order-summary v-if="true"></order-summary>
+        <order-summary
+          @open:order-modal="openOrderModal($event)"
+          v-if="true"
+        ></order-summary>
       </section>
     </div>
     <section class="footer">
@@ -517,6 +520,14 @@ export default {
       }
       this.payment.eMoney.picked = false;
       this.payment.cash.picked = true;
+    },
+    openOrderModal(payload) {
+      console.log("openOrderModal");
+      this.$store.dispatch("updateModals", {
+        isMenuOpened: false,
+        isCartOpened: false,
+        isOrderOpened: payload.isOrderOpened,
+      });
     },
     validate() {
       console.log(this.shipping);
