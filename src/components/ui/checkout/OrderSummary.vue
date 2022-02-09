@@ -39,13 +39,16 @@
       </p>
     </div>
     <div class="cta">
-      <v-button @click="openOrderModal" mode="fill" :isLarge="true">CONTINUE & PAY</v-button>
+      <v-button @click="openOrderModal" mode="fill" :isLarge="true"
+        >CONTINUE & PAY</v-button
+      >
     </div>
   </div>
 </template>
 <script>
 export default {
   emits: ["open:orderModal"],
+  props: ["formValidationCheck"],
   computed: {
     cart() {
       return this.$store.getters["cart"];
@@ -62,9 +65,9 @@ export default {
   },
   methods: {
     openOrderModal() {
-      this.$emit('open:orderModal', { isOrderOpened: true })
-    }
-  }
+       this.$emit('open:orderModal', { isOrderOpened: true })
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
