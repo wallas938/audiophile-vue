@@ -15,52 +15,46 @@
               <div class="grid">
                 <div class="name field-container">
                   <label
-                    :class="{ 'label--error': billing.name.wrongInput }"
+                    :class="{ 'label--error': v$.billing.name.$error }"
                     for="name"
                     >Name</label
                   >
-                  <small v-if="billing.name.wrongInput">{{
-                    billing.name.errorMessage
-                  }}</small>
+                  <small v-if="v$.billing.name.$error">Name too short!</small>
                   <input
-                    @blur="blurHandler({ group: 'billing', field: 'name' })"
-                    v-model.trim="billing.name.value"
-                    :class="{ 'field--error': billing.name.wrongInput }"
+                    @blur="v$.billing.name.$touch"
+                    :class="{ 'field--error': v$.billing.name.$error }"
+                    v-model.trim="billing.name"
                     class="field"
                     type="text"
                   />
                 </div>
                 <div class="email field-container">
                   <label
-                    :class="{ 'label--error': billing.email.wrongInput }"
+                    :class="{ 'label--error': v$.billing.email.$error }"
                     for="email"
                     >Email Address</label
                   >
-                  <small v-if="billing.email.wrongInput">{{
-                    billing.email.errorMessage
-                  }}</small>
+                  <small v-if="v$.billing.email.$error">Wrong format</small>
                   <input
-                    :class="{ 'field--error': billing.email.wrongInput }"
-                    @blur="blurHandler({ group: 'billing', field: 'email' })"
-                    v-model.trim="billing.email.value"
+                    @blur="v$.billing.email.$touch"
+                    :class="{ 'field--error': v$.billing.email.$error }"
+                    v-model.trim="billing.email"
                     class="field"
                     type="email"
                   />
                 </div>
                 <div class="phone field-container">
                   <label
-                    :class="{ 'label--error': billing.phone.wrongInput }"
+                    :class="{ 'label--error': v$.billing.phone.$error }"
                     for="phone"
                     >Phone Number</label
                   >
-                  <small v-if="billing.phone.wrongInput">{{
-                    billing.email.errorMessage
-                  }}</small>
+                  <small v-if="v$.billing.phone.$error">too short!</small>
 
                   <input
-                    :class="{ 'field--error': billing.phone.wrongInput }"
-                    @blur="blurHandler({ group: 'billing', field: 'phone' })"
-                    v-model.trim="billing.phone.value"
+                    @blur="v$.billing.phone.$touch"
+                    :class="{ 'field--error': v$.billing.phone.$error }"
+                    v-model.trim="billing.phone"
                     class="field"
                     type="tel"
                   />
@@ -72,68 +66,66 @@
               <div class="grid">
                 <div class="address field-container">
                   <label
-                    :class="{ 'label--error': shipping.address.wrongInput }"
+                    :class="{ 'label--error': v$.shipping.address.$error }"
                     for="address"
                     >Your Address</label
                   >
-                  <small v-if="shipping.address.wrongInput">{{
-                    shipping.address.errorMessage
-                  }}</small>
+                  <small v-if="v$.shipping.address.$error">too short!</small>
                   <input
-                    :class="{ 'field--error': shipping.address.wrongInput }"
-                    @blur="blurHandler({ group: 'shipping', field: 'address' })"
-                    v-model.trim="shipping.address.value"
+                    :class="{ 'field--error': v$.shipping.address.$error }"
+                    @blur="v$.shipping.address.$touch"
+                    v-model.trim="shipping.address"
                     class="field"
                     type="text"
                   />
                 </div>
                 <div class="zipCode field-container">
                   <label
-                    :class="{ 'label--error': shipping.zipCode.wrongInput }"
+                    :class="{ 'label--error': v$.shipping.zipCode.$error }"
                     for="zipCode"
                     >Zip Code</label
                   >
-                  <small v-if="shipping.zipCode.wrongInput">{{
-                    shipping.zipCode.errorMessage
-                  }}</small>
+                  <small v-if="v$.shipping.zipCode.$error"
+                    >zip code too short!</small
+                  >
                   <input
-                    :class="{ 'field--error': shipping.zipCode.wrongInput }"
-                    @blur="blurHandler({ group: 'shipping', field: 'zipCode' })"
-                    v-model.trim="shipping.zipCode.value"
+                    :class="{ 'field--error': v$.shipping.zipCode.$error }"
+                    @blur="v$.shipping.zipCode.$touch"
+                    v-model.trim="shipping.zipCode"
                     class="field"
                     type="text"
                   />
                 </div>
                 <div class="city field-container">
                   <label
-                    :class="{ 'label--error': shipping.city.wrongInput }"
+                    :class="{ 'label--error': v$.shipping.city.$error }"
                     for="city"
                     >City</label
                   >
-                  <small v-if="shipping.city.wrongInput">{{
-                    shipping.city.errorMessage
-                  }}</small>
+                  <small v-if="v$.shipping.city.$error"
+                    >city name too short!</small
+                  >
                   <input
-                    v-model.trim="shipping.city.value"
-                    :class="{ 'field--error': shipping.city.wrongInput }"
-                    @blur="blurHandler({ group: 'shipping', field: 'city' })"
+                    v-model.trim="shipping.city"
+                    @blur="v$.shipping.city.$touch"
+                    :class="{ 'field--error': v$.shipping.city.$error }"
                     class="field"
                     type="text"
                   />
                 </div>
                 <div class="country field-container">
                   <label
-                    :class="{ 'label--error': shipping.country.wrongInput }"
+                    :class="{ 'label--error': v$.shipping.country.$error }"
                     for="country"
                     >Country</label
                   >
-                  <small v-if="shipping.country.wrongInput">{{
-                    shipping.country.errorMessage
-                  }}</small>
+                  <small v-if="v$.shipping.country.$error"
+                    >country too short!</small
+                  >
                   <input
-                    :class="{ 'field--error': shipping.country.wrongInput }"
-                    @blur="blurHandler({ group: 'shipping', field: 'country' })"
-                    v-model.trim="shipping.country.value"
+                    :class="{ 'field--error': v$.shipping.country.$error }"
+                    @blur="v$.shipping.country.$touch"
+                    v-model.trim="shipping.country"
                     class="field"
                     type="text"
                   />
@@ -146,14 +138,16 @@
                 <div class="radio-fields grid">
                   <label for="method">Payment Method</label>
                   <div class="radio-field-container e-money-area">
-                    <span class="radio-circle e-money" @click="pick('eMoney')">
+                    <span class="radio-circle e-money" @click="pick('e-money')">
                       <span
-                        v-if="payment.eMoney.picked"
+                        v-if="payment.mode === 'e-money'"
                         class="radio-circle-picked"
                       ></span>
                     </span>
                     <input
-                      v-model="payment.eMoney.picked"
+                      v-model="payment.mode"
+                      value="e-money"
+                      hidden
                       class="radio-field"
                       type="radio"
                     />
@@ -162,12 +156,14 @@
                   <div class="radio-field-container cash-area">
                     <span class="radio-circle cash" @click="pick('cash')">
                       <span
-                        v-if="payment.cash.picked"
+                        v-if="payment.mode === 'cash'"
                         class="radio-circle-picked"
                       ></span>
                     </span>
                     <input
-                      v-model="payment.cash.picked"
+                      v-model="payment.mode"
+                      value="cash"
+                      hidden
                       class="radio-field"
                       type="radio"
                     />
@@ -175,49 +171,45 @@
                   </div>
                 </div>
               </div>
-              <div v-if="payment.eMoney.picked" class="e-money-fields">
+              <div v-if="payment.mode === 'e-money'" class="e-money-fields">
                 <div class="e-money-number field-container">
                   <label
-                    :class="{
-                      'label--error': payment.eMoney.eNumber.wrongInput,
-                    }"
+                    :class="{ 'label--error': v$.payment.eNumber.$error }"
                     for="e-money-number"
                     >e-Money Number</label
                   >
-                  <small v-if="payment.eMoney.eNumber.wrongInput">{{
-                    payment.eMoney.eNumber.errorMessage
-                  }}</small>
+                  <small v-if="v$.payment.eNumber.$error"
+                    >e-number too short!</small
+                  >
                   <input
                     :class="{
-                      'field--error': payment.eMoney.eNumber.wrongInput,
+                      'field--error': v$.payment.eNumber.$error,
                     }"
-                    @blur="blurHandlerPayment({ field: 'eNumber' })"
+                    @blur="v$.payment.eNumber.$touch"
                     class="field"
                     type="text"
                     id="e-money-number"
-                    v-model.trim="payment.eMoney.eNumber.value"
+                    v-model.trim="payment.eNumber"
                   />
                 </div>
                 <div class="e-money-pin field-container">
                   <label
-                    :class="{ 'label--error': payment.eMoney.ePin.wrongInput }"
+                    :class="{ 'label--error': v$.payment.ePin.$error }"
                     for="e-money-pin"
                     >e-Money PIN</label
                   >
-                  <small v-if="payment.eMoney.ePin.wrongInput">{{
-                    payment.eMoney.ePin.errorMessage
-                  }}</small>
+                  <small v-if="v$.payment.ePin.$error">e-pin too short!</small>
                   <input
-                    :class="{ 'field--error': payment.eMoney.ePin.wrongInput }"
-                    @blur="blurHandlerPayment({ field: 'ePin' })"
+                    :class="{ 'field--error': v$.payment.ePin.$error }"
+                    @blur="v$.payment.ePin.$touch"
                     class="field"
                     type="text"
-                    v-model.trim="payment.eMoney.ePin.value"
+                    v-model.trim="payment.ePin"
                     id="e-money-pin"
                   />
                 </div>
               </div>
-              <div v-if="payment.cash.picked" class="cash-info">
+              <div v-if="payment.mode === 'cash'" class="cash-info">
                 <div class="logo"></div>
                 <p class="info">
                   The ‘Cash on Delivery’ option enables you to pay in cash when
@@ -245,72 +237,84 @@
 
 <script>
 import OrderSummary from "@/components/ui/checkout/OrderSummary";
+import { useVuelidate } from "@vuelidate/core";
+import { required, email, minLength } from "@vuelidate/validators";
+import { paymentModeValidator } from "@/helpers/custom-form-validators";
+
 export default {
   inject: ["closeModals"],
   components: {
     OrderSummary,
   },
   created() {
+    paymentModeValidator;
     this.closeModals();
   },
+  setup: () => ({ v$: useVuelidate() }),
   data() {
     return {
       billing: {
+        name: "",
+        email: "",
+        phone: "",
+      },
+      shipping: {
+        address: "",
+        zipCode: "",
+        city: "",
+        country: "",
+      },
+      payment: {
+        mode: "e-money",
+        eNumber: "",
+        ePin: "",
+      },
+    };
+  },
+  validations() {
+    return {
+      billing: {
         name: {
-          value: "",
-          errorMessage: "Wrong format (3 characters min)",
-          wrongInput: false,
-          blurState: false,
-          minLength: 3,
+          required,
+          minLength: minLength(3),
         },
         email: {
-          value: "",
-          errorMessage: "Wrong format",
-          wrongInput: false,
-          blurState: false,
-          regex: new RegExp("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$"),
+          required,
+          email,
         },
         phone: {
-          value: "",
-          errorMessage: "Wrong format (10 characters min)",
-          wrongInput: false,
-          blurState: false,
-          minLength: 10,
+          required,
+          minLength: minLength(10),
         },
-        groupValidity: false,
       },
       shipping: {
         address: {
-          value: "",
-          errorMessage: "Wrong format (10 characters min)",
-          wrongInput: false,
-          blurState: false,
-          minLength: 10,
+          required,
+          minLength: minLength(10),
         },
         zipCode: {
-          value: "",
-          errorMessage: "Wrong format (5 characters min)",
-          wrongInput: false,
-          blurState: false,
-          minLength: 5,
+          required,
+          minLength: minLength(5),
         },
         city: {
-          value: "",
-          errorMessage: "Wrong format (3 characters min)",
-          wrongInput: false,
-          blurState: false,
-          minLength: 3,
+          required,
+          minLength: minLength(3),
         },
         country: {
-          value: "",
-          errorMessage: "Wrong format (10 characters min)",
-          wrongInput: false,
-          blurState: false,
-          minLength: 10,
+          required,
+          minLength: minLength(3),
         },
-        groupValidity: false,
       },
       payment: {
+        mode: { required },
+        eNumber: {
+          paymentModeValidator: this.eNumberValidation,
+        },
+        ePin: {
+          paymentModeValidator: this.ePinValidation,
+        },
+      },
+      /* payment: {
         eMoney: {
           picked: true,
           eNumber: {
@@ -332,176 +336,26 @@ export default {
           picked: false,
         },
         groupValidity: false,
-      },
+      }, */
     };
   },
-  watch: {
-    billing: {
-      handler: function () {
-        /* Name Validation */
-
-        if (
-          this.billing.name.value.length < this.billing.name.minLength &&
-          this.billing.name.blurState
-        ) {
-          this.billing.name.wrongInput = true;
-        } else {
-          this.billing.name.wrongInput = false;
-        }
-
-        /* Email Validation */
-
-        if (
-          !this.billing.email.regex.test(this.billing.email.value) &&
-          this.billing.email.blurState
-        ) {
-          this.billing.email.wrongInput = true;
-        } else {
-          this.billing.email.wrongInput = false;
-        }
-
-        /* Phone Validation */
-
-        if (
-          this.billing.phone.value.length < this.billing.phone.minLength &&
-          this.billing.phone.blurState
-        ) {
-          this.billing.phone.wrongInput = true;
-        } else {
-          this.billing.phone.wrongInput = false;
-        }
-        /* Group Validation */
-
-        if (
-          (this.billing.name.wrongInput && this.billing.name.blurState) ||
-          (this.billing.email.wrongInput && this.billing.email.blurState) ||
-          (this.billing.phone.wrongInput && this.billing.phone.blurState)
-        ) {
-          this.billing.groupValidity = false;
-        } else {
-          this.billing.groupValidity = true;
-        }
-      },
-      deep: true,
-    },
-    shipping: {
-      handler: function () {
-        /* Address Validation */
-
-        if (
-          this.shipping.address.value.length <
-            this.shipping.address.minLength &&
-          this.shipping.address.blurState
-        ) {
-          this.shipping.address.wrongInput = true;
-        } else {
-          this.shipping.address.wrongInput = false;
-        }
-
-        /* ZipCode Validation */
-
-        if (
-          this.shipping.zipCode.value.length <
-            this.shipping.zipCode.minLength &&
-          this.shipping.zipCode.blurState
-        ) {
-          this.shipping.zipCode.wrongInput = true;
-        } else {
-          this.shipping.zipCode.wrongInput = false;
-        }
-
-        /* City Validation */
-
-        if (
-          this.shipping.city.value.length < this.shipping.city.minLength &&
-          this.shipping.city.blurState
-        ) {
-          this.shipping.city.wrongInput = true;
-        } else {
-          this.shipping.city.wrongInput = false;
-        }
-
-        /* Country Validation */
-
-        if (
-          this.shipping.country.value.length <
-            this.shipping.country.minLength &&
-          this.shipping.country.blurState
-        ) {
-          this.shipping.country.wrongInput = true;
-        } else {
-          this.shipping.country.wrongInput = false;
-        }
-
-        /* Group Validation */
-
-        if (
-          (this.shipping.address.wrongInput &&
-            this.shipping.address.blurState) ||
-          (this.shipping.zipCode.wrongInput &&
-            this.shipping.zipCode.blurState) ||
-          (this.shipping.city.wrongInput && this.shipping.city.blurState) ||
-          (this.shipping.country.wrongInput && this.shipping.country.blurState)
-        ) {
-          this.shipping.groupValidity = false;
-        } else {
-          this.shipping.groupValidity = true;
-        }
-      },
-      deep: true,
-    },
-    payment: {
-      handler: function () {
-        /* E-Number Validation */
-
-        if (
-          this.payment.eMoney.eNumber.value.length <
-            this.payment.eMoney.eNumber.minLength &&
-          this.payment.eMoney.eNumber.blurState
-        ) {
-          this.payment.eMoney.eNumber.wrongInput = true;
-        } else {
-          this.payment.eMoney.eNumber.wrongInput = false;
-        }
-
-        /* E-Pin Validation */
-
-        if (
-          this.payment.eMoney.ePin.value.length <
-            this.payment.eMoney.ePin.minLength &&
-          this.payment.eMoney.ePin.blurState
-        ) {
-          this.payment.eMoney.ePin.wrongInput = true;
-        } else {
-          this.payment.eMoney.ePin.wrongInput = false;
-        }
-
-        /* Group Validation */
-
-        if (
-          (this.payment.eMoney.eNumber.wrongInput &&
-            this.payment.eMoney.eNumber.blurState) ||
-          (this.payment.eMoney.ePin.wrongInput &&
-            this.payment.eMoney.ePin.blurState)
-        ) {
-          this.payment.groupValidity = false;
-        } else {
-          this.payment.groupValidity = true;
-        }
-      },
-      deep: true,
-    },
-  },
-  computed: {
-    formValidationCheck() {
-      return (
-        this.billing.groupValidity &&
-        this.shipping.groupValidity &&
-        this.payment.groupValidity
-      );
-    },
-  },
   methods: {
+    eNumberValidation() {
+      if (this.payment.mode === "cash") {
+        return true;
+      } else if (this.payment.eNumber.length >= 10) {
+        return true;
+      }
+      return false;
+    },
+    ePinValidation() {
+      if (this.payment.mode === "cash") {
+        return true;
+      } else if (this.payment.ePin.length >= 4) {
+        return true;
+      }
+      return false;
+    },
     blurHandler(fieldData) {
       /*ex: this.billing.name.blurState */
       this[fieldData.group][fieldData.field].blurState = true;
@@ -512,25 +366,18 @@ export default {
     goBack() {
       this.$router.go(-1);
     },
-    pick(field) {
-      if (field === "eMoney") {
-        this.payment.eMoney.picked = true;
-        this.payment.cash.picked = false;
-        return;
-      }
-      this.payment.eMoney.picked = false;
-      this.payment.cash.picked = true;
+    pick(mode) {
+      this.payment.mode = mode;
     },
     openOrderModal(payload) {
-      console.log("openOrderModal");
-      this.$store.dispatch("updateModals", {
-        isMenuOpened: false,
-        isCartOpened: false,
-        isOrderOpened: payload.isOrderOpened,
-      });
-    },
-    validate() {
-      console.log(this.shipping);
+      this.v$.$validate();
+      if (!this.v$.$error) {
+        this.$store.dispatch("updateModals", {
+          isMenuOpened: false,
+          isCartOpened: false,
+          isOrderOpened: payload.isOrderOpened,
+        });
+      }
     },
   },
 };
@@ -692,6 +539,7 @@ export default {
             font-size: 0.9333333rem;
             line-height: 19.12px;
             letter-spacing: -0.25px;
+            margin-left: 16px;
           }
 
           & > input[type="radio"] {
