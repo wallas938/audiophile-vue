@@ -537,6 +537,7 @@ export default {
 
         .patter-circles {
           position: absolute;
+          z-index: 0;
           top: -2.4rem;
           left: -9.933333rem;
           right: 0;
@@ -555,6 +556,8 @@ export default {
         }
 
         .prd-body {
+          position: relative;
+          z-index: 5;
           width: 23.266666rem;
           align-self: flex-end;
           .prd-name,
